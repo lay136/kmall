@@ -29,8 +29,12 @@ const API_CONFIG = {
     //更新购物车的选中状态  
     updateCartsChoices:          ['/carts/choices','put'],
     //删除商品    
-    deleteCarts:                 ['/carts','delete'],    
-    updateCartsCounts:           ['/carts/counts','put'],    
+    deleteCarts:                 ['/carts','delete'], 
+    //更新商品   
+    updateCartsCounts:           ['/carts/counts','put'],
+
+    getOrdersProducts:           ['/orders/products','get'],
+
 
 
     

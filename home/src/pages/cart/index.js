@@ -20,15 +20,15 @@ var page = {
         var _this = this
         api.getCarts({
             success:function(cart){
-                
+                /*
                 if(cart.cartList.length > 0){
                     var html = _util.render(tpl,cart)
                     _this.$elem.html(html)
                 }else{
                     _this.$elem.html('<p class="empty-message">您的购物车空空如也!</p>') 
                 }
-                
-                // _this.renderCart(cart)
+                */
+                _this.renderCart(cart)
             },
             error:function(){
                 _this.showErrorPage()
@@ -37,6 +37,7 @@ var page = {
     },
     renderCart:function(cart){
         //重新加载购物车数量
+        //为了保持购物车的数量和商品的数据保持一致，渲染购物车是用来获取购物车数量的方法
         _nav.loadCartsCount()
         if(cart.cartList.length > 0){
             //缓存总价用来提交时验证
@@ -204,7 +205,6 @@ var page = {
     },
         
 }
-
 
 
 $(function() {

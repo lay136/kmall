@@ -34,6 +34,7 @@ module.exports = {
         'user-update-password'  :'./src/pages/user-update-password/index.js',
         'detail'                :'./src/pages/detail/index.js',
         'cart'                  :'./src/pages/cart/index.js',
+        'order-confirm'         :'./src/pages/order-confirm/index.js',
         
 
 
@@ -117,9 +118,8 @@ module.exports = {
         new htmlWebpackPlugin(getHtmlConfig('user-center','个人中心')),
         new htmlWebpackPlugin(getHtmlConfig('user-update-password','修改密码')),
         new htmlWebpackPlugin(getHtmlConfig('detail','商品详情页')), 
-        new htmlWebpackPlugin(getHtmlConfig('cart','购物车')),        
-
-        
+        new htmlWebpackPlugin(getHtmlConfig('cart','购物车')), 
+        new htmlWebpackPlugin(getHtmlConfig('order-confirm','订单详情')),        
 
 
         //自动清理dist目录
