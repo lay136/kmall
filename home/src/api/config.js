@@ -34,6 +34,9 @@ const API_CONFIG = {
     updateCartsCounts:           ['/carts/counts','put'],
     //获取生成的订单列表
     getOrdersProducts:           ['/orders/products','get'],
+    addOrders:                   ['/orders','post'],
+    
+
 
 
 
