@@ -144,6 +144,8 @@ module.exports = {
                 '/floors',
                 '/products',
                 '/carts',
+                '/orders',
+                
                 
                 
                 

@@ -32,12 +32,9 @@ const API_CONFIG = {
     deleteCarts:                 ['/carts','delete'], 
     //更新商品   
     updateCartsCounts:           ['/carts/counts','put'],
-
+    //获取生成的订单列表
     getOrdersProducts:           ['/orders/products','get'],
 
-
-
-    
 
 
 

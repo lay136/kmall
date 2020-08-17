@@ -17,7 +17,7 @@ var page = {
         //加载地址列表
         this.loadShippingList()
         //加载商品列表
-        // this.loadProductList()
+        this.loadProductList()
         //绑定事件
         this.bindEvent()
         
@@ -26,7 +26,20 @@ var page = {
         var html = _util.render(shippingTpl)
         this.$shippingBox.html(html)
     },
-
+    loadProductList(){
+        // var html = _util.render(productTpl)
+        // this.$productBox.html(html)
+        var _this = this
+        api.getOrdersProducts({
+            success:function(data) {
+                var html = _util.render(productTpl)
+                this.$productBox.html(html)
+            },
+            error:function(err){
+                _this.productBox.html('<p class="empty-message">购物车中还没有选中的商品!</p>')   
+            }
+        })
+    },
     bindEvent:function(){
 
     },
