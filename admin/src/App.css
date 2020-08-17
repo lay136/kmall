@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.ant-table-content{
+    min-height: 400px;
+}
+.simditor .simditor-body{
+    overflow: hidden;
+  /*  box-sizing: border-box;
+    min-height: 200px;
+    min-width: 300px;*/
+}
+/*.ant-upload-picture-card-wrapper{
+    display: block !important;
+}*/
