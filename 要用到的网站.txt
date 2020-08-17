@@ -1,0 +1,25 @@
+框架的：
+Express
+官网:http://expressjs.com/
+中文网站:http://www.expressjs.com.cn/
+
+git回退版本
+git add -A 提交添加所有更改内容
+git log查看最近提交的版本号
+git  reset --hard +版本号
+就可以回退到之前的版本了
+
+Webpack
+文档网站：https://www.webpackjs.com/configuration/output/#output-publicpath
+
+antd自定义主题：
+https://ant.design/docs/react/customize-theme
+
+自定义图标
+font-awesome
+
+
+轮播图：swiper
+网址：https://www.swiper.com.cn
+
+
