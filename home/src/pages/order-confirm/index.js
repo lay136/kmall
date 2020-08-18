@@ -21,7 +21,7 @@ var page = {
         this.loadProductList()
         //绑定事件
         this.bindEvent()
-        
+
     },
     loadShippingList:function(){
         var html = _util.render(shippingTpl)
@@ -65,8 +65,11 @@ var page = {
             // console.log('xxx');
             _modal.show()
         })
-
+        //处理删除地址
+        this.$show
     },
+
+
 
 }
 

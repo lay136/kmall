@@ -2,11 +2,15 @@
 const API_CONFIG = {
     //登录zhuce
     login:                       ['/sessions/users','post'],
+    //获取用户名
     getUsername:                 ['/sessions/username','get'],
+    //用户退出
     logout:                      ['/sessions/users','delete'],
+    //监听表单提交
     register:                    ['/users','post'],
     //用户中心
     checkUsername:               ['/users/checkUsername','get'],
+    // 获取登录用户信息
     getUserinfo:                 ['/sessions/users','get'],
     //更新密码
     updateUsers:                 ['/users','put'],
@@ -20,6 +24,7 @@ const API_CONFIG = {
     getProductsList:             ['/products/list','get'], 
     //详情页数据 
     getProductsDetail:           ['/products/detail','get'],  
+    
     //添加到购物车
     addCarts:                    ['/carts','post'], 
     //更新购物车数量
@@ -32,8 +37,10 @@ const API_CONFIG = {
     deleteCarts:                 ['/carts','delete'], 
     //更新商品   
     updateCartsCounts:           ['/carts/counts','put'],
+    
     //获取生成的订单列表
     getOrdersProducts:           ['/orders/products','get'],
+    //获取新增订单
     addOrders:                   ['/orders','post'],
     
 
