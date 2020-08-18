@@ -85,38 +85,17 @@ module.exports = {
             //验证邮编
             zip: $.trim($('[name="zip"]').val()),
         }
-        // console.log(formData);
         //校验数据，验证数据的合法性
         var validateResult = this.validate(formData)
         //验证数据通过发送请求
-        // console.log(validateResult);
         if (validateResult.status) {//验证数据通过
-            // console.log('xx');
             formErr.hide()
             //3.发送请求
-            /*
-            $.ajax({
-                url:'/sessions/users',
-                method:'post',
-                data:formData,
-                dataType:'json',
-                success:function(result){
-                    console.log(result)
-                    if(result.code == 0){
-                        window.location.href = "/"
-                    }else{
-                       formErr.show(result.message) 
-                    }
-                },
-                error:function(err){
-                    formErr.show('网络错误,请稍后再试')
-                }
-            })
-            */
-            api.login({
+            api.addShippings({
                 data: formData,
                 success:function(data) {
-                    window.location.href = _util.getParamFromUrl('redirect') || "/"
+                    console.log('xxx')
+                    // window.location.href = _util.getParamFromUrl('redirect') || "/"
                     // window.location.href = '/'
                 },
                 error:function(msg){
@@ -136,27 +115,37 @@ module.exports = {
             msg: ''
         }
         // console.log(_util);
-        //校验
-        //用户名不能为空
-        if (!_util.validate(formData.username, 'require')) {
+        //用户名校验
+        if (!_util.validate(formData.name, 'require')) {
             result.msg = "收货人姓名未填写"
             return result
         }
-        //用户名格式合法验证
-        if (!_util.validate(formData.username, 'username')) {
-            result.msg = "收货人姓名格式不正确"
+        //省份非空验证
+        if (!_util.validate(formData.province, 'require')) {
+            result.msg = "请选择省份"
             return result
         }
-        //密码不能为空
-        if (!_util.validate(formData.password, 'require')) {
-            result.msg = "密码不能为空"
+        //城市非空验证
+        if (!_util.validate(formData.city, 'require')) {
+            result.msg = "请选择城市名称"
             return result
         }
-        //密码格式验证
-        if (!_util.validate(formData.password, 'password')) {
-            result.msg = "密码格式不正确"
+        //收货地址非空验证
+        if (!_util.validate(formData.address, 'require')) {
+            result.msg = "请填写收货地址"
             return result
         }
+        //手机号码格式非空/非法验证
+        if (!_util.validate(formData.phone, 'phone')) {
+            result.msg = "请填写正确的手机号码"
+            return result
+        }
+        //邮编地址非空验证
+        if (!_util.validate(formData.zip, 'require')) {
+            result.msg = "请填写邮编地址"
+            return result
+        }
+        
         result.status = true
         return result
     },
