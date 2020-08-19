@@ -1,4 +1,6 @@
 
+
+var api = require('api')
 var _util = require('util')
 var _city = require('util/city')
 var modalTpl = require('./modal.tpl')
@@ -22,6 +24,9 @@ var formErr = {//监听事件信息
 
 module.exports = {
     show:function(shipping){
+        //缓存编辑地址回传的数据，用于数据回填
+        this.shipping = shipping
+        
         this.$elem = $('.modal-box')
     	//加载地址弹出层
     	this.loadModal()
@@ -64,12 +69,11 @@ module.exports = {
             }
         }) 
 
-
-
     },
     //表单提交验证
     submit: function() {
-        console.log('submit');
+        var _this = this
+        // console.log('submit');
         //获取数据
         var formData = {//trim去掉前后空格
             //验证收货人姓名
@@ -85,25 +89,33 @@ module.exports = {
             //验证邮编
             zip: $.trim($('[name="zip"]').val()),
         }
-        //校验数据，验证数据的合法性
+        //2.校验数据
         var validateResult = this.validate(formData)
-        //验证数据通过发送请求
-        if (validateResult.status) {//验证数据通过
+        //验证成功
+        if (validateResult.status) {
             formErr.hide()
             //3.发送请求
-            api.addShippings({
-                data: formData,
-                success:function(data) {
-                    console.log('xxx')
-                    // window.location.href = _util.getParamFromUrl('redirect') || "/"
-                    // window.location.href = '/'
+            var request = api.addShippings
+            var action = '新增'
+            if(_this.shipping){
+                formData.id = _this.shipping._id
+                request = api.updateShippings
+                action = '编辑'
+            }
+            request({
+                data:formData,
+                success:function(shippings){
+                    console.log(shippings);
+                    //重新渲染地址列表-自定义事件-多个参数需要传递数组，单个参数用数组的形式写出来
+                    $('.shipping-box').trigger('get-shippings',[shippings])
+                    _util.showSuccessMsg(action+'地址成功')
+                    _this.hideModal()
                 },
-                error:function(msg){
-                    formErr.show(msg) 
+                error:function(){
+                    _util.showErrorMsg(action+'地址失败,请稍后再试')
                 }
             })
         }
-
         //验证失败
         else {
             formErr.show(validateResult.msg)

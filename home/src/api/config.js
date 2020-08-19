@@ -10,7 +10,7 @@ const API_CONFIG = {
     register:                    ['/users','post'],
     //用户中心
     checkUsername:               ['/users/checkUsername','get'],
-    // 获取登录用户信息
+    //获取登录用户信息
     getUserinfo:                 ['/sessions/users','get'],
     //更新密码
     updateUsers:                 ['/users','put'],
@@ -42,8 +42,24 @@ const API_CONFIG = {
     getOrdersProducts:           ['/orders/products','get'],
     //获取新增订单
     addOrders:                   ['/orders','post'],
+    //获取订单列表
+    getOrdersList:               ['/orders/list','get'],
+    //订单详情
+    getOrdersDetail:             ['/orders/detail','get'],
+    //订单状态
+    updateOrdersStatus:          ['/orders/status','put'],
+
+
     //新增订单地址
-    addShippings:                ['/shippings','post'],      
+    addShippings:                ['/shippings','post'],
+    //地址列表
+    getShippingsList:            ['/shippings/list','get'],
+    //删除地址      
+    deleteShippings:             ['/shippings','delete'], 
+    //编辑地址     
+    getShippingsDetail:          ['/shippings/detail','get'],
+    //更新地址状态      
+    updateShippings:             ['/shippings','put'],      
 
     
 

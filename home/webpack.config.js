@@ -145,6 +145,7 @@ module.exports = {
                 '/products',
                 '/carts',
                 '/orders',
+                '/shippings',
                 
                 
                 

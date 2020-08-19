@@ -24,22 +24,33 @@ var page = {
 
     },
     loadShippingList:function(){
-        var html = _util.render(shippingTpl)
-        this.$shippingBox.html(html)
-       // _this.renderShipping(shippings)
+        // var html = _util.render(shippingTpl)
+        // this.$shippingBox.html(html)
+        var _this = this
+        api.getShippingsList({
+            success:function(shippings){
+                /*
+                var html = _util.render(shippingTpl,{
+                    shippings:shippings
+                })
+                _this.$shippingBox.html(html)
+                */
+               _this.renderShipping(shippings)
+            }
+        })
     },
     renderShipping(shippings){
-        // var _this = this
-        // //标示当前选中的地址,在渲染页面时设置为active
-        // shippings.forEach(function(shipping){
-        //     if(shipping._id == _this.selectedShippingId){
-        //         shipping.active = true
-        //     }
-        // })
-        // var html = _util.render(shippingTpl,{
-        //     shippings:shippings
-        // })
-        // this.$shippingBox.html(html)
+        var _this = this
+        //标示当前选中的地址,在渲染页面时设置为active
+        shippings.forEach(function(shipping){
+            if(shipping._id == _this.selectedShippingId){
+                shipping.active = true
+            }
+        })
+        var html = _util.render(shippingTpl,{
+            shippings:shippings
+        })
+        this.$shippingBox.html(html)
     },
     loadProductList:function(){
         var _this = this
@@ -60,14 +71,84 @@ var page = {
         })
     },
     bindEvent:function(){
+        var _this = this
+        //监听新增地址后获取最新数据
+        this.$shippingBox.on('get-shippings',function(ev,shippings){
+            _this.renderShipping(shippings)
+        })
         //1.弹出添加地址面板
         this.$shippingBox.on('click','.shipping-add',function(){
-            // console.log('xxx');
             _modal.show()
         })
-        //处理删除地址
-        this.$show
+        //2.处理删除地址
+        this.$shippingBox.on('click','.shipping-delete',function(ev){
+            //阻止事件冒泡,防止点击时选中改地址
+            ev.stopPropagation()
+            if(_util.showConfirm('您确定要删除该条地址吗?')){
+                var $this = $(this)
+                var shippingId = $this.parents('.shipping-item').data('shipping-id')
+                api.deleteShippings({
+                    data:{
+                        id:shippingId
+                    },
+                    success:function(shippings){
+                        _this.renderShipping(shippings)
+                    },
+                    error:function(msg){
+                        _util.showErrorMsg(msg)
+                    }
+                })
+            }
+        })
+        //3.编辑地址
+        this.$shippingBox.on('click','.shipping-edit',function(ev){
+            //阻止事件冒泡,防止点击时选中改地址
+            ev.stopPropagation()
+            var $this = $(this)
+            var shippingId = $this.parents('.shipping-item').data('shipping-id')
+            api.getShippingsDetail({
+                data:{
+                    id:shippingId
+                },
+                success:function(shipping){
+                    //弹出编辑框
+                    _modal.show(shipping)
+                },
+                error:function(){
+                    _util.showErrorMsg('获取地址失败，请稍后再试！')
+                }                
+            })
+        })
+        //4.选中地址
+        this.$shippingBox.on('click','.shipping-item',function(){
+            var $this = $(this)
+            $this.addClass('active')
+            .siblings('.shipping-item').removeClass('active')
+
+            //保存选中的地址id,为了页面重新渲染时可以知道当前选中的是那个地址
+            _this.selectedShippingId = $this.data('shipping-id')
+        })
+        //5.去支付(生成订单)
+        this.$productBox.on('click','.btn-submit',function(){
+            if(_this.selectedShippingId){
+                api.addOrders({
+                    data:{
+                        shippingId:_this.selectedShippingId
+                    },
+                    success:function(order){
+                        window.location.href = "./payment.html?orderNo="+order.orderNo
+                    },
+                    error:function(msg){
+                        _util.showErrorMsg(msg)
+                    }
+                })
+            }
+            else{
+                _util.showErrorMsg('请选择地址后再提交!')
+            }
+        })
     },
+
 
 
 
