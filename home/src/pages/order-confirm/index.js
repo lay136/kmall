@@ -119,6 +119,7 @@ var page = {
                 }                
             })
         })
+
         //4.选中地址
         this.$shippingBox.on('click','.shipping-item',function(){
             var $this = $(this)
@@ -128,6 +129,7 @@ var page = {
             //保存选中的地址id,为了页面重新渲染时可以知道当前选中的是那个地址
             _this.selectedShippingId = $this.data('shipping-id')
         })
+        
         //5.去支付(生成订单)
         this.$productBox.on('click','.btn-submit',function(){
             if(_this.selectedShippingId){
