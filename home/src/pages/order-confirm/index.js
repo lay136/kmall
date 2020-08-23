@@ -133,6 +133,7 @@ var page = {
         //5.去支付(生成订单)
         this.$productBox.on('click','.btn-submit',function(){
             if(_this.selectedShippingId){
+                //创建支付订单，去支付页面
                 api.addOrders({
                     data:{
                         shippingId:_this.selectedShippingId

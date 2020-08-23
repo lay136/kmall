@@ -35,8 +35,8 @@ module.exports = {
         'detail'                :'./src/pages/detail/index.js',
         'cart'                  :'./src/pages/cart/index.js',
         'order-confirm'         :'./src/pages/order-confirm/index.js',
-        
-
+        'payment'               :'./src/pages/payment/index.js',
+        'order-list'            :'./src/pages/order-list/index.js',
 
 
     },
@@ -119,7 +119,10 @@ module.exports = {
         new htmlWebpackPlugin(getHtmlConfig('user-update-password','修改密码')),
         new htmlWebpackPlugin(getHtmlConfig('detail','商品详情页')), 
         new htmlWebpackPlugin(getHtmlConfig('cart','购物车')), 
-        new htmlWebpackPlugin(getHtmlConfig('order-confirm','订单详情')),        
+        new htmlWebpackPlugin(getHtmlConfig('order-confirm','订单详情')),
+        new htmlWebpackPlugin(getHtmlConfig('payment','订单支付')),        
+        new htmlWebpackPlugin(getHtmlConfig('order-list','订单列表')),        
+               
 
 
         //自动清理dist目录
@@ -146,9 +149,7 @@ module.exports = {
                 '/carts',
                 '/orders',
                 '/shippings',
-                
-                
-                
+                '/payments'
                 
             ],
             target: 'http://127.0.0.1:3000',

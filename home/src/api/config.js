@@ -40,9 +40,9 @@ const API_CONFIG = {
     
     //获取生成的订单列表
     getOrdersProducts:           ['/orders/products','get'],
-    //获取新增订单
+    //创建订单
     addOrders:                   ['/orders','post'],
-    //获取订单列表
+    //订单确认页面
     getOrdersList:               ['/orders/list','get'],
     //订单详情
     getOrdersDetail:             ['/orders/detail','get'],
@@ -61,8 +61,10 @@ const API_CONFIG = {
     //更新地址状态      
     updateShippings:             ['/shippings','put'],      
 
-    
-
+    //支付订单
+    getPayments:                 ['/payments','get'], 
+    //订单支付状态
+    getPaymentsStatus:           ['/payments/status','get'], 
 }
 
 

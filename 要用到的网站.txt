@@ -1,25 +1,30 @@
-��ܵģ�
+¿ò¼ÜµÄ£º
 Express
-����:http://expressjs.com/
-������վ:http://www.expressjs.com.cn/
+¹ÙÍø:http://expressjs.com/
+ÖÐÎÄÍøÕ¾:http://www.expressjs.com.cn/
 
-git���˰汾
-git add -A �ύ�������и�������
-git log�鿴����ύ�İ汾��
-git  reset --hard +�汾��
-�Ϳ��Ի��˵�֮ǰ�İ汾��
+git»ØÍË°æ±¾
+git add -A Ìá½»Ìí¼ÓËùÓÐ¸ü¸ÄÄÚÈÝ
+git log²é¿´×î½üÌá½»µÄ°æ±¾ºÅ
+git  reset --hard +°æ±¾ºÅ
+¾Í¿ÉÒÔ»ØÍËµ½Ö®Ç°µÄ°æ±¾ÁË
 
 Webpack
-�ĵ���վ��https://www.webpackjs.com/configuration/output/#output-publicpath
+ÎÄµµÍøÕ¾£ºhttps://www.webpackjs.com/configuration/output/#output-publicpath
 
-antd�Զ������⣺
+antd×Ô¶¨ÒåÖ÷Ìâ£º
 https://ant.design/docs/react/customize-theme
 
-�Զ���ͼ��
+×Ô¶¨ÒåÍ¼±ê
 font-awesome
 
 
-�ֲ�ͼ��swiper
-��ַ��https://www.swiper.com.cn
+ÂÖ²¥Í¼£ºswiper
+ÍøÖ·£ºhttps://www.swiper.com.cn
 
 
+
+修改订单支付状态
+ db.orders.update({orderNo:"15981995058102018"},{$set:{status:30,statusDesc:"未支付"}})
+
+ 
