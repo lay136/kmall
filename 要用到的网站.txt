@@ -25,6 +25,6 @@ font-awesome
 
 
 修改订单支付状态
- db.orders.update({orderNo:"15981995058102018"},{$set:{status:30,statusDesc:"未支付"}})
+ db.orders.update({orderNo:"15981995058102018"},{$set:{status:30,statusDesc:"已支付"}})
 
  
