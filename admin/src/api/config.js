@@ -40,7 +40,7 @@ export const API_CONFIG = {
     updateAds:                   ["/ads","put"],
     updateAdsOrder:              ["/ads/order","put"],
     updateAdsIsShow:             ["/ads/isShow","put"],
-    
+    //订单api
     getOrdersList:               ["/orders/list","get"],
     getOrdersDetail:             ["/orders/detail","get"],
     updateOrdersStatus:          ["/orders/status","put"], 

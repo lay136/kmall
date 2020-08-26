@@ -42,11 +42,11 @@ const API_CONFIG = {
     getOrdersProducts:           ['/orders/products','get'],
     //创建订单
     addOrders:                   ['/orders','post'],
-    //订单确认页面
+    //订单确认列表
     getOrdersList:               ['/orders/list','get'],
-    //订单详情
+    //获取订单详情
     getOrdersDetail:             ['/orders/detail','get'],
-    //订单状态
+    //更新订单状态
     updateOrdersStatus:          ['/orders/status','put'],
 
 
