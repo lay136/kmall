@@ -1,10 +1,13 @@
 <!--模版-->
 <template>
-    <div id="app">
+    <!-- <div id="app"> -->
         <!--3.使用组件-->
-        <Header />
+       <!--  <Header />
         <List  />
         <Footer />
+    </div> -->
+    <div id="app">
+        <p>this is vue pages</p>
     </div>
 </template>
 
@@ -26,9 +29,9 @@
 </script>
 
 <!--样式-->
-<style>
-    #app{
-        width: 600px;
-        margin: 100px auto;
-    }
+<style lang="less">
+    // #app{
+    //     width: 600px;
+    //     margin: 100px auto;
+    // }
 </style>
