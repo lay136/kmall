@@ -19,8 +19,6 @@ import Category from 'pages/category';
 import Product from 'pages/product';
 import Ad from 'pages/ad';
 import Order from 'pages/order'
-
-
 import Err from 'common/err';
 
 
