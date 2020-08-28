@@ -38,6 +38,13 @@ npm i vue-cli-plugin-style-resources-loader --save-dev
 
 
 
+route路由部分:
+安装模块: 
+npm i vue-router
+npm i vant -S
+cnpm i babel-plugin-import -D
+
+
 轮播图组件：
 官网地址：https://www.swiper.com.cn/
 1.引用按装swiper模板(用5.版本)
@@ -56,11 +63,6 @@ cnpm i swiper@5
 
 
 
-route路由部分:
-安装模块: 
-npm i vue-router
-npm i vant -S
-cnpm i babel-plugin-import -D
 
 
 

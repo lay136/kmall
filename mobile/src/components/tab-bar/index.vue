@@ -14,7 +14,9 @@
             <van-tabbar-item     
                 replace
                 to="/cart"
-                icon="cart-o">
+                icon="cart-o"
+                badge="5"
+                >
                     购物车
             </van-tabbar-item>
                 <van-tabbar-item     
