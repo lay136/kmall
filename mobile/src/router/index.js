@@ -5,7 +5,7 @@
 //   	render: h => h(App)
 // }).$mount('#app')
 // 
-// //1.引入模块
+//1.引入模块
 import Vue from "vue"
 import VueRouter from "vue-router"
 
@@ -20,10 +20,10 @@ Vue.use(VueRouter)
 
 //4.导出路由对象
 export default new VueRouter({
-    routes:[
-        {path:"/home",component:Home},
-        {path:"/cart",component:Cart},
-        {path:"/me",component:Me},
-        {path:"/",redirect:"/home"},
-    ]
+	routes:[
+		{path:"/home",component:Home},
+		{path:"/cart",component:Cart},
+		{path:"/me",component:Me},
+		{path:"/",redirect:"/home"},
+	]
 })

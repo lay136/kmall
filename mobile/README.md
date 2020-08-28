@@ -56,4 +56,12 @@ cnpm i swiper@5
 
 
 
+route路由部分:
+安装模块: 
+npm i vue-router
+npm i vant -S
+cnpm i babel-plugin-import -D
+
+
+
 
