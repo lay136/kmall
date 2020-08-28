@@ -27,3 +27,33 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+
+
+
+解析less文件的两个插件：
+npm i style-resources-loader --save-dev
+npm i vue-cli-plugin-style-resources-loader --save-dev
+
+
+
+轮播图组件：
+官网地址：https://www.swiper.com.cn/
+1.引用按装swiper模板(用5.版本)
+cnpm i swiper@5
+2.在html中配置：
+<div class="swiper-container">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">Slide 1</div>
+		<div class="swiper-slide">Slide 2</div>
+		<div class="swiper-slide">Slide 3</div>
+	</div>
+	<!-- 如果需要分页器 -->
+	<div class="swiper-pagination"></div>
+</div>
+
+
+
+
+

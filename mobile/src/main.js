@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+// 加载全局css样式
+import './assets/css/common.css'
+
+
+
 //引入store
 import store from './store'
 
