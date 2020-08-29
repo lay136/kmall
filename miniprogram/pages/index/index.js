@@ -50,5 +50,18 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  tapMotto:function(){
+    // console.log()
+    /*不保留当前页面
+    wx.redirectTo({
+      url: '/pages/article/article'
+    })
+    */
+    wx.navigateTo({
+      url:'/pages/article/article'
+    })
   }
+
+
 })

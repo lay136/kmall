@@ -17,8 +17,12 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 400rpx;
+  border: 2rpx solid #333;
+  padding: 20rpx;
+  border-radius: 10rpx;
 }
+
 page{
   background-color: #fabda1;
 }

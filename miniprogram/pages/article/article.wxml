@@ -1,2 +1,29 @@
 <!--pages/article/article.wxml-->
-<text>pages/article/article.wxml</text>
+<!-- <text>pages/article/article.wxml</text> -->
+<view>
+    <swiper indicator-dots="true"
+    autoplay="true" interval="5000" duration="500">
+        <swiper-item>
+            <image 
+                src="/images/swiper/s1.jpg" 
+                class="slide-image" 
+                bindload="setContainerHeight"
+            />
+        </swiper-item>
+        <swiper-item>
+            <image src="/images/swiper/s2.jpg" class="slide-image"/>
+        </swiper-item>
+        <swiper-item>
+            <image src="/images/swiper/s3.jpg" class="slide-image"/>
+        </swiper-item>        
+    </swiper>
+    <view >
+
+    
+    </view>
+
+
+
+
+</view>
+
