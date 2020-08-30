@@ -1,4 +1,4 @@
-﻿﻿# kmall项目：
+﻿# kmall项目：
 服务器接口类型：restful类型接口
 	参考文档地址：
 	http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html
