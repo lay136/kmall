@@ -3,18 +3,8 @@
     padding: 0;
 }
 .ant-table-content{
-    min-height: 400px;
+    min-height: 600px;
 }
-.simditor .simditor-body{
-    overflow: hidden;
-  /*  box-sizing: border-box;
-    min-height: 200px;
-    min-width: 300px;*/
-}
-/*.ant-upload-picture-card-wrapper{
-    display: block !important;
-}*/
-
 .ant-upload-picture-card-wrapper{
     display: block !important;
 }

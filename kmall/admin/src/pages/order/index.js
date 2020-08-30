@@ -8,6 +8,7 @@ class Order extends Component {
 		return(
 			<Switch>
 				<Route path="/order/detail/:orderNo?" component={OrderDetail} />
+				//订单列表
 				<Route path="/order/" component={OrderList} />
 			</Switch>
 		)

@@ -36,18 +36,18 @@ module.exports = {
     },    
     module: {
         rules: [
-            //处理css文件
-            // {
-            //     test: /\.css$/,
-            //     use: [
-            //         {
-            //             loader: MiniCssExtractPlugin.loader,
-            //             options: {
-            //             }
-            //         },
-            //             "css-loader"
-            //         ]
-            // },
+            // 处理css文件
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                        }
+                    },
+                        "css-loader"
+                    ]
+            },
             //处理图片
             {
                 test: /\.(png|jpg|gif)$/i,

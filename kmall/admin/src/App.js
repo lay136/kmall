@@ -51,8 +51,8 @@ class App extends Component {
                         <HomeRoute path="/user" component={ User } />
                         <HomeRoute  path="/category" component={ Category }  />
                         <HomeRoute  path="/product" component={ Product }  />
-                        <HomeRoute  path="/ad" component={Ad}  />
-                        <HomeRoute  path="/order" component={Order}  />
+                        <HomeRoute  path="/ad" component={ Ad }  />
+                        <HomeRoute  path="/order" component={ Order }  />
                         <LoginRoute path="/login" component={ Login } />
                         <Route component={ Err } />
                     </Switch>

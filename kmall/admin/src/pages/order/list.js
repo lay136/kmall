@@ -128,6 +128,8 @@ class OrderList extends Component {
     }
 }
 
+
+//映射store里面的数据
 const mapStateToProps = (state)=>{
 	return {
 		isPageFetching:state.get('order').get('isPageFetching'),

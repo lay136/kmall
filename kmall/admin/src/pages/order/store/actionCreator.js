@@ -4,7 +4,6 @@ import {message} from 'antd'
 
 import api from 'api'
 
-
 const getSetPageAction = (payload)=>{
 	return {
 		type:types.SET_PAGE,
