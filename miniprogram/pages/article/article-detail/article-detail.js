@@ -1,4 +1,5 @@
-// pages/article/article-detail/article-detail.js
+var { articles } = require('../../../db/index.js')
+
 Page({
 
     /**
@@ -12,6 +13,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        var articleId = options.articleId
+        var article = articles[articleId]
 
     },
 

@@ -90,5 +90,13 @@ Page({
     onShareAppMessage: function () {
 
     },
-    articles
+    /**
+   * 处理跳转到详情页面
+   */
+    tapArticleItem:function(ev){
+        var articleId = ev.currentTarget.dataset.articleId;
+        wx.navigateTo({
+        url: '/pages/article/article-detail/article-detail?articleId=' + articleId,
+        })
+    }
 })
