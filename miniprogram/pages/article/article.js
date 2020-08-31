@@ -1,10 +1,13 @@
-// pages/article/article.js
+// 引用数据文件
+var { articles } = require('../../db/index.js')
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        /*
         articles:[
             {
                 author:'小辉',
@@ -27,6 +30,8 @@ Page({
                 view: 20
             },      
           ]
+          */
+        articles:[]
 
     },
 
@@ -34,7 +39,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({ articles: articles })
     },
 
     /**
@@ -84,5 +89,6 @@ Page({
      */
     onShareAppMessage: function () {
 
-    }
+    },
+    articles
 })

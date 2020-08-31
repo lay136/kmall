@@ -1,5 +1,7 @@
 {
   "pages":[
+    "pages/article/article-detail/article-detail",
+
     "pages/article/article",
     "pages/index/index",
     "pages/logs/logs"

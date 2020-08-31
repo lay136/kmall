@@ -59,7 +59,7 @@ Page({
     })
     */
     wx.navigateTo({
-      url:'/pages/article/article'
+      // url:'/pages/article/article'
     })
   }
 
