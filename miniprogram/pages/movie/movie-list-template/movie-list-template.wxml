@@ -1,0 +1,12 @@
+
+<template name="movieList">   
+  <view class='movie-list-wrap'>
+
+        <view class='head'>
+            <text class='tag'>{{tag}}</text>
+            <text>更多></text>
+        </view>
+
+
+  </view>
+</template>  

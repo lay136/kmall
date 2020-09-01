@@ -58,8 +58,15 @@ Page({
       url: '/pages/article/article'
     })
     */
+
+    /*保留当前页面，跳转到应用内的某个页面，不能跳到 tabbar 页面。
     wx.navigateTo({
       // url:'/pages/article/article'
+    })
+    */
+    // 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
+    wx.switchTab({
+      url: '/pages/article/article',
     })
   }
 

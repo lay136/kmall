@@ -103,7 +103,7 @@ Page({
     tapCollection:function(){
         //wx.setStorageSync('key1',{name:'Tom'})
         //var data = wx.getStorageSync('key1')
-        //console.log(data)
+        //console.log(data);
         //获取storage中的收藏对象
         var articles_collection = wx.getStorageSync('articles_collection')
         var currentIsCollected = articles_collection[this.data.articleId]
@@ -136,18 +136,18 @@ Page({
     tapMusic:function(){
         //获取背景音乐播放器实例
         var backgroundAudioManager  = wx.getBackgroundAudioManager()
-        // console.log(backgroundAudioManager)
+        // console.log(backgroundAudioManager);
         if(this.data.isPlaying){//暂停播放
             backgroundAudioManager.pause()//暂停播放
             // this.setData({ isPlaying: false })
         }
         else{//播放音乐
-            backgroundAudioManager.src = this.data.music.src;
-            backgroundAudioManager.title = this.data.music.title;
-            backgroundAudioManager.coverImgUrl = this.data.music.coverImgUrl;
-            // backgroundAudioManager.title = '成都-赵雷';
-            // backgroundAudioManager.src ='http://music.163.com/song/media/outer/url?id=436514312.mp3';
-            // backgroundAudioManager.coverImgUrl = 'https://p2.music.126.net/34YW1QtKxJ_3YnX9ZzKhzw==/2946691234868155.jpg?param=34y34'
+            // backgroundAudioManager.src = this.data.music.src;
+            // backgroundAudioManager.title = this.data.music.title;
+            // backgroundAudioManager.coverImgUrl = this.data.music.coverImgUrl;
+            backgroundAudioManager.title = '成都-赵雷';
+            backgroundAudioManager.src ='http://music.163.com/song/media/outer/url?id=436514312.mp3';
+            backgroundAudioManager.coverImgUrl = 'https://p2.music.126.net/34YW1QtKxJ_3YnX9ZzKhzw==/2946691234868155.jpg?param=34y34'
             // this.setData({ isPlaying:true})
         }
     }
