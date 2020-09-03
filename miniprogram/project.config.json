@@ -4,40 +4,33 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
+		"scopeDataCheck": false,
+		"coverView": true,
 		"es6": true,
-		"enhance": false,
 		"postcss": true,
+		"compileHotReLoad": false,
 		"preloadBackgroundData": false,
 		"minified": true,
-		"newFeature": false,
-		"coverView": true,
-		"nodeModules": false,
 		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
+		"newFeature": true,
 		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": false,
 		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
 		"useIsolateContext": true,
+		"nodeModules": false,
+		"enhance": false,
 		"useCompilerModule": false,
-		"userConfirmedUseCompilerModuleSwitch": true
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"showShadowRootInWxmlPanel": true,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
-	"appid": "wxe84f850499a8ae54",
+	"libVersion": "2.8.2",
+	"appid": "wx8aac377dd36440cf",
 	"projectname": "miniprogram",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"scripts": {},
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -51,15 +44,7 @@
 			"list": []
 		},
 		"game": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
+			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {

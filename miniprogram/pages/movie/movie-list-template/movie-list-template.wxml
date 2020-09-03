@@ -1,15 +1,18 @@
 <import src="../movie-item-template/movie-item-template.wxml"/>
-<template name="movieList">
-    <view class='movie-list-wrap'>
-        <view class='head'>
-            <text class='tag'>正在热映</text>
-            <text>更多></text>
-        </view>
-        <view class='list'>
-            <template is="movieItem" /> 
-            <template is="movieItem" /> 
-            <template is="movieItem" /> 
-        </view>
+<template name="movieList">   
+  <view class='movie-list-wrap'>
+    <view class='head'>
+      <text class='tag'>{{tag}}</text>
+      <text 
+        catchtap='tapMore' 
+        class='more'
+        data-type="{{type}}"
+      >更多></text>
     </view>
-    
-</template>
+    <view class='list'>
+      <block wx:for="{{movies}}" wx:key="index">
+        <template is="movieItem" data="{{...item}}" />          
+      </block>
+    </view>
+  </view>
+</template>  
