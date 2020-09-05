@@ -57,11 +57,11 @@
 		可以发送请求,易用、简洁且高效,是一个基于 promise的 HTTP 库,用在浏览器和 node.js 中。
 
 	安装：
-		 使用 npm: npm install axios
+		 npm安装: npm install axios
 
-		 使用 bower: bower install axios
+		 bower安装: bower install axios
 
-		 使用 cdn:<script src="https://unpkg.com/axios/dist/axios.min.js">		  </script>
+		 使用cdn: <script src="https://unpkg.com/axios/dist/axios.min.js">
 
 	前端：
 
@@ -70,6 +70,8 @@
 		是一个小型且功能丰富的JavaScript库。通过易于使用的API，它使HTML文档的遍历和操作，事件处理，动画和Ajax等事情变得更加简单。兼具多功能性和可扩展性。
 
 	Webpack: 项目的一些配置项，安装包环境
+
+	移动端注意点：
 
 
 
@@ -95,9 +97,7 @@ wx.redirectTo:关闭当前页面，跳转到应用内的某个页面。但是不
 
 3.尺寸单位:用-rpx-小程序底层来换算像素单位,可以根据屏幕宽度进行自适应,规定屏幕宽为750rpx。
 
-地址：
 
-https://github.com/AIcolonel/w202006
 
 
 
