@@ -3,7 +3,8 @@ const path = require('path')
 module.exports = {
 	// 服务端口
   	devServer: {
-    	port:3003
+    	port:3003,
+      proxy: 'http://127.0.0.1:3000',
   	},
   	// less文件配置
   	pluginOptions: {

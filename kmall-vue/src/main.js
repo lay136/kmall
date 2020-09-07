@@ -1,3 +1,4 @@
+import axios from 'axios'
 import Vue from 'vue'
 import App from './App.vue'
 
@@ -12,6 +13,7 @@ import './plugins/vant'
 
 //引入store
 import store from './store'
+axios.defaults.withCredentials = true //允许跨域
 
 Vue.config.productionTip = false
 
