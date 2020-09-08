@@ -5,7 +5,7 @@
 // export const SELECT_ALL_TODO = 'selectAllTodo'
 // export const DEL_ALL_DONE = 'delAllDone'
 
-// export const GET_ADS = 'home_ads'
+export const GET_ADS = 'home_ads'
 
 
 

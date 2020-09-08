@@ -1,5 +1,5 @@
 //目标 导出一个对象 对象的属性是方法名,对象的值是方法
-import { SERVER,API_CONFIG } from './config.js'
+import { API_CONFIG } from './config.js'
 import axios from 'axios'
 import { removeUsername } from 'util'
 
@@ -9,7 +9,7 @@ const getApiObj = (apiConfig) =>{
         apiObj[key] = (data)=>{
             //处理请求参数
             let url = apiConfig[key][0] || '/'
-            url = SERVER + url
+            // url = SERVER + url
             let method = apiConfig[key][1] || 'get'
             //发送请求到后台
             return request(url,method,data)

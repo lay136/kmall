@@ -19,9 +19,10 @@ export default {
     // [DEL_ALL_DONE]({commit}){
     //     commit(DEL_ALL_DONE)
     // }, 
-//     async [GET_ADS]({commit}){
-//         const result = await api.getPositionAds()
-//         console.log(result);
-        
-//     },             
-// }
+    async [GET_ADS]({commit}){
+        const result = await api.getPositionAds({
+            position:2
+        })
+        console.log(result);
+    },             
+}

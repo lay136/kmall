@@ -1,4 +1,4 @@
 //唯一的数据源
-// export default {
-//    homeAds:[]
-// }
+export default {
+    ads:[] 
+}

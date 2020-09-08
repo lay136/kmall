@@ -10,20 +10,18 @@
         <!-- 轮播图组件 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="https://api.mall.kuazhu.com/ad-images/1599184940642.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://api.mall.kuazhu.com/ad-images/1599184962033.jpg" alt="">
-                </div>
-                <div class="swiper-slide">
-                    <img src="https://api.mall.kuazhu.com/ad-images/1599184975302.jpg" alt="">
+                <div 
+                    class="swiper-slide"
+                    v-for="(ad,index) in homeAds"
+                >
+                    <img :src="ad.image" alt="">
                 </div>
             </div>
             <!-- 如果需要分页器 -->
-            <!-- <div class="swiper-pagination">23</div> -->
+            <div class="swiper-pagination"></div>
+
             <van-grid :column-num='5' >
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" text="手机通讯" />
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" text="手机通讯" url="http://m.mall.kuazhu.com/#/list?categoryId=5f157b8d5dbe7a0023712b7c"/>
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243379743.jpg" text="食品生鲜" />
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595244144843.jpg" text="家用电器" />
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243206088.jpg" text="饮料酒水" />
@@ -74,21 +72,22 @@
 <!-- 逻辑部分 -->
 <script>
     import Vue from 'vue';
-    import { Grid, Search, GridItem, Sticky, Divider, Card } from 'vant';
-    Vue.use(Search);
-    Vue.use(Grid);
-    Vue.use(GridItem);
-    Vue.use(Sticky);
-    Vue.use(Divider);
-    Vue.use(Card);
-    // import { GET_ADS } from './store/types.js'
+    // import { Grid, Search, GridItem, Sticky, Divider, Card } from 'vant';
+    
+    import { GET_ADS } from './store/types.js'
     import Swiper from 'swiper';
     import 'swiper/dist/css/swiper.min.css';
     export default {
         name:'home',
+        data(){
+            return {
+                value:''
+            }
+        },
         //挂载组件
         mounted(){
             //加载首页广告内容
+            this.$store.dispatch(GET_ADS)
             // this.$store.dispatch(GET_ADS)
             new Swiper ('.swiper-container', {
                 // 循环模式选项
@@ -101,6 +100,12 @@
                 },
             })
         }
+        // computed:{
+        //     ...mapGetters([
+        //         'homeAds',
+        //         'homeFloors'
+        //     ])
+        // }  
     }
 </script>
 <!-- 样式部分 -->

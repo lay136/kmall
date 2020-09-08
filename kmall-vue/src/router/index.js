@@ -4,7 +4,6 @@
 //   	router,
 //   	render: h => h(App)
 // }).$mount('#app')
-// 
 //1.引入模块
 import Vue from "vue"
 import VueRouter from "vue-router"

@@ -1,18 +1,13 @@
-//store的出口文件
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import  state from './state.js'
-import  mutations from './mutations.js'
-import  actions from './actions.js'
-import  getters from './getters.js'
+import home from 'pages/home/store'
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state,
-    mutations,
-    actions,
-    getters
-})
+    modules:{
+        home:home
+    }
+}) 
 
