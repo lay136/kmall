@@ -1,9 +1,12 @@
 <!-- 结构部分 -->
 <template>
     <div id="Home">
-        <div class="header">
-            <van-search v-model="value" placeholder="请输入搜索关键词" />
-        </div>
+        <van-sticky>
+            <div class="header">
+                <van-search v-model="value" placeholder="请输入搜索关键词" />
+            </div>
+        </van-sticky>
+        
         <!-- 轮播图组件 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -18,26 +21,52 @@
                 </div>
             </div>
             <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
+            <!-- <div class="swiper-pagination">23</div> -->
+            <van-grid :column-num='5' >
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" text="手机通讯" />
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243379743.jpg" text="食品生鲜" />
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595244144843.jpg" text="家用电器" />
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243206088.jpg" text="饮料酒水" />
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243323048.jpg" text="汽车保养" />
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243232631.jpg" text="美妆护肤" />
+              
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243130830.jpg" text="个护清洁" />
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1587973628877.png" text="电脑耗材" />
+                
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243270185.jpg" text="母婴童装" />
+                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243298132.jpg" text="内衣配饰" />
+            </van-grid>
         </div> 
+ 
+        <div class="product-wrap">
+            <h2 class="floor-title">电脑耗材</h2>
+                <van-grid class="product-list"
+                        :column-num='2' 
+                        :icon-size='150'
+                        :gutter='5'
+                    >
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1587973772260.jpg" text="宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）" />
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595243507580.jpg" text="惠普（HP）暗影精灵5代 游戏台式电脑主机（九代i7 8G 256GSSD+1T GTX1660Ti 6G独显 三年上门）" />
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595243848881.jpg" text="惠普（HP）S1000 Plus 无线鼠标 办公鼠标 黑色" />
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595243903896.jpg" text="联想（Lenovo）天逸510S 英特尔酷睿i5 个人商务台式电脑整机（I5-9400 8G 1T WiFi Win10 ）21.5英寸" />
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595243964583.jpg" text="联想(Lenovo)小新Air14英寸 AMD锐龙版(全新12nm)轻薄笔记本电脑(R5-3500U 12G 512G PCIE IPS)轻奢灰" />
+                </van-grid>
 
-        <van-grid>
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" text="手机通讯" />
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243379743.jpg" text="食品生鲜" />
-          
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595244144843.jpg" text="家用电器" />
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243206088.jpg" text="饮料酒水" />
-        </van-grid>
 
-        <!-- 热销部分   -->
-        <div class="feature">
-            <div class="feature-item">
-                <a href=""><img src="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" alt="">
-                <div>手机通讯</div>
-                </a>
-            </div>
-        </div>
 
+                <h2 class="floor-title">家用电器</h2>
+                <van-grid class="product-list"
+                        :column-num='2' 
+                        :icon-size='150'
+                        :gutter='5'
+                    >
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244218971.jpg" text="飞利浦（PHILIPS）70PUF6894/T3 70英寸 人工智能超大屏幕金属边框 16G大内存4K超高清HDR网络智能液晶电视机" />
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244569073.jpg" text="夏普（SHARP）LCD-60SU575A 60英寸 4K超高清 广色域 杜比音效 宽音域 双线WIFI 智能网络液晶电视机" />
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244300893.jpg" text="九阳（Joyoung） 九阳豆浆机多功能家用豆浆机 破壁免滤预约1.3L大小容量2-5人旗舰店小家电 DJ13B-D81SG" />
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244378009.jpg" text="康佳(KONKA) LED39S2 39英寸 智能网络电视1G+4G内存 WIFI 平板高清液晶卧室电视机" />
+                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244499249.jpg" text="索尼（SONY）KD-55X8000G 55英寸 4K超高清 HDR 智能网络 液晶平板电视 智能语音 安卓7.0 蓝牙/WiFi" />
+                </van-grid>
+        </div> 
 
     </div>
 </template>
@@ -45,11 +74,13 @@
 <!-- 逻辑部分 -->
 <script>
     import Vue from 'vue';
-    import { Search } from 'vant';
-    import { Grid, GridItem } from 'vant';
+    import { Grid, Search, GridItem, Sticky, Divider, Card } from 'vant';
     Vue.use(Search);
     Vue.use(Grid);
-    Vue.use(GridItem)
+    Vue.use(GridItem);
+    Vue.use(Sticky);
+    Vue.use(Divider);
+    Vue.use(Card);
     // import { GET_ADS } from './store/types.js'
     import Swiper from 'swiper';
     import 'swiper/dist/css/swiper.min.css';
@@ -80,78 +111,13 @@
             width: 100%;
             .rem(height,160);
         }
-        .header{
-            width:10rem;
-        }
-        .left{
-            margin: 0.3rem 0.2rem 0rem 0.2rem;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .search{
-            display:inline-block;
-            height:0.96875rem;
-            width:6.9375rem;
-            background: mainTint;
-            border-radius: 0.475rem;
-            text-align: center;
-            font-size: 0.446667rem;
-            color: rgba(7, 17, 27, .6);
-            line-height: 0.96875rem;
-            vertical-align: middle;
-            margin-top: 0rem;
-            // position: fixed;
-            // top: 44px;
-            // left: 0;
-            // right: 0;
-        }
-        // .back-top {
-        //     position: fixed;
-        //     right: 10px;
-        //     bottom: 60px;
-        //   }
-        .text{
-            // 文字图片设置同样的高度即可 在来来个
-            height: 0.7rem;
-            display: inline-block;
-            line-height: 0.7rem;
-        }
-        .img{
-            width: 0.7rem;
-            height: 0.7rem;
-            vertical-align: middle;
-            margin-left: 100rem;
-        }
-        .right{
-            vertical-align: middle;
-            display: inline-block;
-            margin: 0rem .1rem 0rem .3rem;
-        }
-        .iconImg{
-            height: 0.7875rem;
-            width: 0.7875rem;
-        }
-        //热销部分
-        .feature {
-            display: flex;
-            margin-top: 10px;
-            font-size: 14px;
-            padding-bottom: 30px;
-            border-bottom: 10px solid #eee;
-        }
-
-        .feature-item {
-            flex: 1;
-            text-align: center;
-        }
-
-        .feature img {
-            width: 80px;
-            height: 80px;
+        .floor-title{
+            margin-top: 20px;
             margin-bottom: 10px;
+            font-size: 28px;
+            text-align: center;
         }
-
-
+        
         .product-wrap{
             display: flex;
             flex-direction: column;

@@ -1,6 +1,12 @@
 <template>
     <div class="Note">
-        this is Note page
+        <van-sticky>
+            <div class="header">
+                <van-search v-model="value" placeholder="请输入搜索关键词" />
+            </div>
+        </van-sticky>
+
+        
     </div>
 </template>
 
