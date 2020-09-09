@@ -1,25 +1,22 @@
 const path = require('path')
 
 module.exports = {
-	// 服务端口
-  	devServer: {
-    	port:3003,
-      // proxy: 'http://127.0.0.1:3000',
-      proxy: 'https://api.mall.kuazhu.com/',
-  	},
-  	// less文件配置
-  	pluginOptions: {
-    	'style-resources-loader': {
-      		preProcessor: 'less',
-      		patterns: [
-      			path.resolve(__dirname, './src/assets/less/index.less')
-      		]
-    	}
-  	},
-  	//别名配置
-  	chainWebpack:config => {
-	    config.resolve.alias
-		    .set('pages',path.resolve(__dirname,'./src/pages'))
-		    .set('api',path.resolve(__dirname,'./src/api'))
-  	} 
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [
+        path.resolve(__dirname, './src/assets/less/index.less')
+      ]
+    }
+  },    
+  devServer:{
+    port:3004,
+    // proxy: 'http://127.0.0.1:3000',
+    proxy: 'https://api.mall.kuazhu.com',
+  },
+  chainWebpack:config =>{
+    config.resolve.alias
+    .set('pages',path.resolve(__dirname,'./src/pages'))
+    .set('api',path.resolve(__dirname,'./src/api'))
+  }   
 }

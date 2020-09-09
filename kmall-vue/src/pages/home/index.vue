@@ -7,19 +7,22 @@
             </div>
         </van-sticky>
         
-        <!-- 轮播图组件 -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div 
-                    class="swiper-slide"
-                    v-for="(ad,index) in homeAds"
-                >
-                    <img :src="ad.image" alt="">
+            <!-- 轮播图组件 -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div 
+                        class="swiper-slide"
+                        v-for="(ad,index) in homeAds"
+                    >
+                        <img :src="ad.image" alt="">
+                    </div>
                 </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
             </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
 
+
+            
             <van-grid :column-num='5' >
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" text="手机通讯" url="http://m.mall.kuazhu.com/#/list?categoryId=5f157b8d5dbe7a0023712b7c"/>
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243379743.jpg" text="食品生鲜" />
@@ -34,37 +37,22 @@
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243270185.jpg" text="母婴童装" />
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243298132.jpg" text="内衣配饰" />
             </van-grid>
-        </div> 
  
-        <div class="product-wrap">
-            <h2 class="floor-title">电脑耗材</h2>
-                <van-grid class="product-list"
-                        :column-num='2' 
-                        :icon-size='150'
-                        :gutter='5'
-                    >
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1587973772260.jpg" text="宏碁 (Acer) 极光 D606D 投影仪 投影机办公（普清 3500流明 标配HDMI 梯形校正 商用机皇新升级 白天直投）" />
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595243507580.jpg" text="惠普（HP）暗影精灵5代 游戏台式电脑主机（九代i7 8G 256GSSD+1T GTX1660Ti 6G独显 三年上门）" />
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595243848881.jpg" text="惠普（HP）S1000 Plus 无线鼠标 办公鼠标 黑色" />
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595243903896.jpg" text="联想（Lenovo）天逸510S 英特尔酷睿i5 个人商务台式电脑整机（I5-9400 8G 1T WiFi Win10 ）21.5英寸" />
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595243964583.jpg" text="联想(Lenovo)小新Air14英寸 AMD锐龙版(全新12nm)轻薄笔记本电脑(R5-3500U 12G 512G PCIE IPS)轻奢灰" />
-                </van-grid>
-
-
-
-                <h2 class="floor-title">家用电器</h2>
-                <van-grid class="product-list"
-                        :column-num='2' 
-                        :icon-size='150'
-                        :gutter='5'
-                    >
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244218971.jpg" text="飞利浦（PHILIPS）70PUF6894/T3 70英寸 人工智能超大屏幕金属边框 16G大内存4K超高清HDR网络智能液晶电视机" />
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244569073.jpg" text="夏普（SHARP）LCD-60SU575A 60英寸 4K超高清 广色域 杜比音效 宽音域 双线WIFI 智能网络液晶电视机" />
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244300893.jpg" text="九阳（Joyoung） 九阳豆浆机多功能家用豆浆机 破壁免滤预约1.3L大小容量2-5人旗舰店小家电 DJ13B-D81SG" />
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244378009.jpg" text="康佳(KONKA) LED39S2 39英寸 智能网络电视1G+4G内存 WIFI 平板高清液晶卧室电视机" />
-                    <van-grid-item icon="https://api.mall.kuazhu.com/product-images/1595244499249.jpg" text="索尼（SONY）KD-55X8000G 55英寸 4K超高清 HDR 智能网络 液晶平板电视 智能语音 安卓7.0 蓝牙/WiFi" />
-                </van-grid>
-        </div> 
+       <ul class="product-wrap" v-if="homeFloors.length > 1">
+            <li class="product-floor" v-for="(floor,floorIndex) in homeFloors" :key="floorIndex">
+                <h3 class="floor-title">{{floor.title}}</h3>
+                <ul class="product-list">
+                    <li class="product-item" v-for="(product,productIndex) in floor.products" :key="productIndex">
+                        <img class="product-image" :src="product.mainImage" alt="">
+                        <div class="product-content">
+                            <h4 class="product-name">{{product.name}}</h4>
+                            <p class="product-price">{{product.price | formatPrice}}</p>
+                            <span class="btn-buy">购买</span>
+                        </div>
+                    </li>                                                       
+                </ul>
+            </li>       
+        </ul> 
 
     </div>
 </template>
@@ -78,51 +66,43 @@
     import Swiper from 'swiper';
     import 'swiper/dist/css/swiper.min.css';
     export default {
-        name:'home',
+        name:'Home',
         data(){
             return {
-                value:''
+                value:'simple'
             }
         },
-        //挂载组件
         mounted(){
-            //加载首页广告内容
             this.$store.dispatch(GET_ADS)
-            // this.$store.dispatch(GET_ADS)
-            new Swiper ('.swiper-container', {
-                // 循环模式选项
-                loop: true,
-                autoplay:true,
-                //分页器
-                pagination: {
-                  el: '.swiper-pagination',
-                  clickable:true
-                },
+            .then(()=>{
+                new Swiper ('.swiper-container', {
+                    // 循环模式选项
+                    loop: true,
+                    autoplay:true,
+                    //分页器
+                    pagination: {
+                      el: '.swiper-pagination',
+                      clickable:true
+                    },
+                })                
             })
-        }
-        // computed:{
-        //     ...mapGetters([
-        //         'homeAds',
-        //         'homeFloors'
-        //     ])
-        // }  
+            this.$store.dispatch(GET_FLOORS)
+        },
+        computed:{
+            ...mapGetters([
+                'homeAds',
+                'homeFloors'
+            ])
+        }              
     }
 </script>
 <!-- 样式部分 -->
 <style scoped lang="less">
-    #Home{
-        //搜索样式
+    .Home{
         .swiper-slide img{
             width: 100%;
             .rem(height,160);
         }
-        .floor-title{
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 28px;
-            text-align: center;
-        }
-        
         .product-wrap{
             display: flex;
             flex-direction: column;

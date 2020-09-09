@@ -7,8 +7,8 @@ Vue.use(Toast);
 Vue.use(TabbarItem);
 
 Vue.use(Search);
-    Vue.use(Grid);
-    Vue.use(GridItem);
-    Vue.use(Sticky);
-    Vue.use(Divider);
-    Vue.use(Card);
+Vue.use(Grid);
+Vue.use(GridItem);
+Vue.use(Sticky);
+Vue.use(Divider);
+Vue.use(Card);
