@@ -1,28 +1,27 @@
-<!-- 结构部分 -->
 <template>
-    <div id="Home">
+    <div class="Home">
+        <!-- 粘性布局 -->
         <van-sticky>
+            <!-- 搜索框 -->
             <div class="header">
                 <van-search v-model="value" placeholder="请输入搜索关键词" />
             </div>
         </van-sticky>
-        
-            <!-- 轮播图组件 -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div 
-                        class="swiper-slide"
-                        v-for="(ad,index) in homeAds"
-                    >
-                        <img :src="ad.image" alt="">
-                    </div>
+
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div 
+                    class="swiper-slide"
+                    v-for="(ad,index) in homeAds"
+                >
+                    <img :src="ad.image" alt="">
                 </div>
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
             </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
 
-
-            
             <van-grid :column-num='5' >
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" text="手机通讯" url="http://m.mall.kuazhu.com/#/list?categoryId=5f157b8d5dbe7a0023712b7c"/>
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243379743.jpg" text="食品生鲜" />
@@ -37,8 +36,9 @@
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243270185.jpg" text="母婴童装" />
                 <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243298132.jpg" text="内衣配饰" />
             </van-grid>
- 
-       <ul class="product-wrap" v-if="homeFloors.length > 1">
+
+
+        <ul class="product-wrap" v-if="homeFloors.length > 1">
             <li class="product-floor" v-for="(floor,floorIndex) in homeFloors" :key="floorIndex">
                 <h3 class="floor-title">{{floor.title}}</h3>
                 <ul class="product-list">
@@ -52,26 +52,24 @@
                     </li>                                                       
                 </ul>
             </li>       
-        </ul> 
-
+        </ul>        
     </div>
 </template>
 
-<!-- 逻辑部分 -->
 <script>
     import Vue from 'vue';
-    // import { Grid, Search, GridItem, Sticky, Divider, Card } from 'vant';
-    
-    import { GET_ADS } from './store/types.js'
-    import Swiper from 'swiper';
-    import 'swiper/dist/css/swiper.min.css';
+
+    import { mapGetters } from 'vuex'
+    import Swiper from 'swiper'
+    import 'swiper/dist/css/swiper.min.css'
+    import { GET_ADS,GET_FLOORS } from './store/types.js'  
     export default {
         name:'Home',
         data(){
             return {
-                value:'simple'
+                value:''
             }
-        },
+        }, 
         mounted(){
             this.$store.dispatch(GET_ADS)
             .then(()=>{
@@ -89,6 +87,7 @@
             this.$store.dispatch(GET_FLOORS)
         },
         computed:{
+            //用对象展开运算符将 getter 混入 computed 对象中
             ...mapGetters([
                 'homeAds',
                 'homeFloors'
@@ -96,7 +95,7 @@
         }              
     }
 </script>
-<!-- 样式部分 -->
+
 <style scoped lang="less">
     .Home{
         .swiper-slide img{

@@ -1,5 +1,5 @@
 <template>
-<div class="Note">
+    <div class="Note">
 
     <van-sticky>
         <div class="header">
@@ -28,13 +28,15 @@
 
 <script>
     import Vue from 'vue';
-    import { Sidebar, SidebarItem, Toast } from 'vant';
+    import { Sidebar, SidebarItem, Toast, Notify } from 'vant';
     Vue.use(Sidebar);
     Vue.use(SidebarItem);
     export default {
+    	name:'Note',
         data() {
             return {
-              activeKey: 0,
+              activeKey:'0',
+              value:'',
             };
         },
         methods: {

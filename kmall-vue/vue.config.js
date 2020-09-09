@@ -10,7 +10,7 @@ module.exports = {
     }
   },    
   devServer:{
-    port:3004,
+    port:3003,
     // proxy: 'http://127.0.0.1:3000',
     proxy: 'https://api.mall.kuazhu.com',
   },
