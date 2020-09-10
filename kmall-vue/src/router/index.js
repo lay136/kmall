@@ -7,6 +7,7 @@ import Home from 'pages/home'
 import Cart from 'pages/cart'
 import Me from 'pages/me'
 import Note from 'pages/note'
+import List from 'pages/list'
 
 //3.声明使用
 Vue.use(VueRouter)
@@ -18,6 +19,7 @@ export default new VueRouter({
         {path:"/cart",component:Cart},
         {path:"/me",component:Me},
 		{path:"/note",component:Note},
+		{path:"/list",component:List},
         {path:"/",redirect:"/home"},
     ]
 })
