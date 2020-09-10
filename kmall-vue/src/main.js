@@ -6,7 +6,6 @@ import './assets/css/common.css'
 
 //全局加载vant组件
 import './plugins/vant'
-
 //引入store
 import store from './store'
 //引入路由对象

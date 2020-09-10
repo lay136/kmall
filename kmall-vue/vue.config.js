@@ -1,6 +1,13 @@
 const path = require('path')
 
 module.exports = {
+  //服务端口配置
+  devServer:{
+    port:3003,
+    // proxy: 'http://127.0.0.1:3000',
+    proxy: 'https://api.mall.kuazhu.com',
+  },
+  //配置less文件
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
@@ -9,11 +16,7 @@ module.exports = {
       ]
     }
   },    
-  devServer:{
-    port:3003,
-    // proxy: 'http://127.0.0.1:3000',
-    proxy: 'https://api.mall.kuazhu.com',
-  },
+  //别名配置
   chainWebpack:config =>{
     config.resolve.alias
     .set('pages',path.resolve(__dirname,'./src/pages'))

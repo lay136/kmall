@@ -8,7 +8,7 @@
             </div>
         </van-sticky>
 
-
+        <!-- 轮播图部分 -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div 
@@ -22,22 +22,28 @@
             <div class="swiper-pagination"></div>
         </div>
 
-            <van-grid :column-num='5' >
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" text="手机通讯" url="http://m.mall.kuazhu.com/#/list?categoryId=5f157b8d5dbe7a0023712b7c"/>
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243379743.jpg" text="食品生鲜" />
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595244144843.jpg" text="家用电器" />
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243206088.jpg" text="饮料酒水" />
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243323048.jpg" text="汽车保养" />
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243232631.jpg" text="美妆护肤" />
-              
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243130830.jpg" text="个护清洁" />
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1587973628877.png" text="电脑耗材" />
-                
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243270185.jpg" text="母婴童装" />
-                <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243298132.jpg" text="内衣配饰" />
-            </van-grid>
+        <!-- 热销部分 -->
+        <van-grid 
+            :column-num='5' 
+            :gutter="1" 
+            square
+            :icon-size="43"
+            >
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" text="手机通讯" url="http://m.mall.kuazhu.com/#/list?categoryId=5f157b8d5dbe7a0023712b7c"/>
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243379743.jpg" text="食品生鲜" />
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595244144843.jpg" text="家用电器" />
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243206088.jpg" text="饮料酒水" />
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243323048.jpg" text="汽车保养" />
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243232631.jpg" text="美妆护肤" />
+          
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243130830.jpg" text="个护清洁" />
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1587973628877.png" text="电脑耗材" />
+            
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243270185.jpg" text="母婴童装" />
+            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243298132.jpg" text="内衣配饰" />
+        </van-grid>
 
-
+        <!-- 商品列表部分 -->
         <ul class="product-wrap" v-if="homeFloors.length > 1">
             <li class="product-floor" v-for="(floor,floorIndex) in homeFloors" :key="floorIndex">
                 <h3 class="floor-title">{{floor.title}}</h3>
@@ -45,7 +51,7 @@
                     <li class="product-item" v-for="(product,productIndex) in floor.products" :key="productIndex">
                         <img class="product-image" :src="product.mainImage" alt="">
                         <div class="product-content">
-                            <h4 class="product-name">{{product.name}}</h4>
+                            <h4 class="product-name" style="overflow: space-between;">{{product.name}}</h4>
                             <p class="product-price">{{product.price | formatPrice}}</p>
                             <span class="btn-buy">购买</span>
                         </div>

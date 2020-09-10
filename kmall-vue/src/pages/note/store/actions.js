@@ -8,7 +8,11 @@ import {GET_ADS,GET_FLOORS} from './types.js'
 export default {
 
     async [GET_ADS]({commit}){
-        const result = await api.getPositionAds()
+        const result = await api.getPositionAds({
+            //携带参数，默认为PC端，设置position:2，请求页面的数据为移动端
+            position:2
+        })
+         // console.log(result);
         if(result.code == 0){
             commit(GET_ADS,{homeAds:result.data})
         }
