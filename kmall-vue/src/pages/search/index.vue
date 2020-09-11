@@ -1,7 +1,8 @@
 <template>
 	<div id="Search">
 		<div>
-			<i class="back-icon" @click='goBack'><van-icon name="arrow-left" /></i>
+			<i class="back-icon" @click='goBack' ></i>
+		    	<!-- <van-icon name="arrow-left"/> -->
 			<van-search class="van-search"  placeholder="请输入搜索关键词" />
 		</div>
 		<div class="recent-search">
@@ -9,7 +10,7 @@
 			<span class="clear" @click="empty">清除</span>
 		</div>
 		<div class="history-search" v-for="(item,index) in historyList" :key="index" @click="goSearchDetail(item)">
-			<span>111</span>
+			<span></span>
 		</div>
 		
 		
@@ -17,6 +18,9 @@
 </template>
 
 <script>
+	import Vue from 'vue'
+	import { NavBar } from 'vant';
+	Vue.use(NavBar);
 	export default {
 		name:'Search',
 		data() {
@@ -32,6 +36,12 @@
 			}
 		},
 		methods:{
+		    onClickLeft() {
+		      Toast('返回');
+		    },
+		    onClickRight() {
+		      Toast('按钮');
+		    },
 			goBack(){
 				this.$router.replace('/')
 			},
@@ -89,10 +99,13 @@
 		right: 0;
 		background-color: #fff;
 		.back-icon{
-			position: absolute;
+			// position: absolute;
 			top: .53125rem;
 			font-size: .5625rem;
 			color: #1890ff;
+			margin-top:10rem;
+
+
 		}
 		
 		.van-search{
@@ -100,6 +113,7 @@
 			align-items: center;
 			box-sizing: border-box;
 			padding: .3125rem .375rem;
+			// margin-top:10rem;
 		}
 		.recent-search{
 			display: flex;
@@ -132,4 +146,5 @@
 		}
 		
 	}
+
 </style>

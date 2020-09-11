@@ -3,9 +3,10 @@
         <!-- 粘性布局 -->
         <van-sticky>
             <!-- 搜索框 -->
-            <div class="header">
+            <Search />
+            <!-- <div class="header">
                 <van-search v-model="value" placeholder="请输入搜索关键词" />
-            </div>
+            </div> -->
         </van-sticky>
 
         <!-- 轮播图部分 -->
@@ -22,7 +23,6 @@
             <div class="swiper-pagination"></div>
         </div>
 
-        <!-- 热销部分 -->
         <van-grid 
             :column-num='5' 
             :gutter="1" 
@@ -42,6 +42,18 @@
             <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243270185.jpg" text="母婴童装" />
             <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243298132.jpg" text="内衣配饰" />
         </van-grid>
+         
+          <!-- <div class="grid-father">
+            <van-grid 
+            :column-num="5"
+            :gutter="3" 
+            :icon-size="60"
+            center
+            v-for="(arr, index) in homeArr" :key="index"
+            >
+                <van-grid-item :icon="arr.icon" :text="arr.name" />
+            </van-grid>
+        </div> -->
 
         <!-- 商品列表部分 -->
         <ul class="product-wrap" v-if="homeFloors.length > 1">
@@ -68,7 +80,8 @@
     import { mapGetters } from 'vuex'
     import Swiper from 'swiper'
     import 'swiper/dist/css/swiper.min.css'
-    import { GET_ADS,GET_FLOORS } from './store/types.js'  
+    import { GET_ADS,GET_FLOORS,GET_CATEGORIES } from './store/types.js' 
+    import Search from '../../components/search/index.vue'
     export default {
         name:'Home',
         data(){
@@ -76,7 +89,11 @@
                 value:''
             }
         }, 
+        components: {
+            Search
+        },
         mounted(){
+            //获取广告数据
             this.$store.dispatch(GET_ADS)
             .then(()=>{
                 new Swiper ('.swiper-container', {
@@ -90,13 +107,18 @@
                     },
                 })                
             })
+            //获取楼层数据
             this.$store.dispatch(GET_FLOORS)
+            //获取分类数据
+            this.$store.dispatch(GET_CATEGORIES)
         },
         computed:{
             //用对象展开运算符将 getter 混入 computed 对象中
             ...mapGetters([
+                'homeArr',
                 'homeAds',
-                'homeFloors'
+                'homeFloors',
+
             ])
         }              
     }
@@ -108,8 +130,20 @@
             width: 100%;
             .rem(height,160);
         }
-        .product-wrap{
+        .grid-father{
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            z-index: 99;
+            .van-grid-item{
+                height: 90px;
+                margin-bottom: 5px;
+                margin-top: 5px;
+            }
+        }
+        .product-wrap{
+            display: absolute;
             flex-direction: column;
             .rem(padding,0,10);
             .product-floor{
@@ -169,4 +203,5 @@
             }
         }           
     }
+    
 </style>

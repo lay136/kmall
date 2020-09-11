@@ -103,8 +103,8 @@ wx.redirectTo:关闭当前页面，跳转到应用内的某个页面。但是不
 
 
 
-
-
+华为 HarmonyOS 面向全场景的开源分布式操作系统：
+地址：https://openharmony.gitee.com/openharmony
 
 
 

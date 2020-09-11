@@ -3,6 +3,9 @@ export default {
     homeAds(state){
         return state.ads
     },
+    homeArr(state) {
+        return state.arr
+    },
     homeFloors(state){
         return state.floors
     }    

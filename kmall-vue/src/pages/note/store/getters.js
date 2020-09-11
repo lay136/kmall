@@ -2,5 +2,8 @@
 export default {
     listCategories(state){
         return state.categories
-    }   
+    },
+    listArr(state){
+        return state.arr
+    },   
 }

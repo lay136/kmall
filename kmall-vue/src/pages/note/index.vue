@@ -2,53 +2,37 @@
     <div class="Note">
 
         <van-sticky>
-            <div class="header">
+            <search />
+            <!-- <div class="header">
                 <van-search v-model="value" placeholder="请输入搜索关键词" />
-            </div>
+            </div> -->
         </van-sticky>
 
-        <!-- 
-        <van-sidebar v-model="activeKey" @change="onChange">
-            <van-sidebar-item title="手机通讯" />
-            <van-sidebar-item title="食品生鲜" />
-            <van-sidebar-item title="汽车保养" />
-            <van-sidebar-item title="内衣配饰" />
-            <van-sidebar-item title="母婴童装" />
-            <van-sidebar-item title="美妆护肤" />
-            <van-sidebar-item title="酒水饮料" />
-            <van-sidebar-item title="个护清洁" />
-        </van-sidebar> 
-        <van-grid 
-            :column-num="3"  
-            :icon-size="72"  
-            :border="false" 
-            >
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595386719634.jpg" text="全屏手机" />
-        </van-grid>
-        -->
         <van-row type="flex">
             <div>
-                <van-sidebar v-model="activeKey">
-                    <van-sidebar-item title="手机通讯" />
-                    <van-sidebar-item title="食品生鲜" />
-                    <van-sidebar-item title="汽车保养" />
-                    <van-sidebar-item title="内衣配饰" />
-                    <van-sidebar-item title="母婴童装" />
-                    <van-sidebar-item title="美妆护肤" />
-                    <van-sidebar-item title="酒水饮料" />
-                    <van-sidebar-item title="个护清洁" />
-                </van-sidebar>
+                <van-sidebar v-model="activeKey" >
+                        <van-sidebar-item
+                        v-for="(arr,arrindex) in listCategories" 
+                        :key="arrindex"
+                        :title="arr.name"
+                        :pid="arr._id"
+                        @click="handleContent()"
+                         /> 
+                    </van-sidebar>
             </div>
+
             
             <van-col span="24">
                 <van-grid 
                     :column-num="2"  
-                    :icon-size="100"  
+                    :icon-size="100"
+
                 default>
                     <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595386719634.jpg" text="全屏手机" />
                 </van-grid>
             </van-col>
 
+            
         </van-row>
 
 
@@ -59,7 +43,9 @@
 </template>
 
 <script>
-    import { GET_CATEGORIES } from './store/types.js'
+    import { GET_CATEGORIES, GET_NOTE_CATEGORIES  } from './store/types.js'
+    import Search from '../../components/search/index.vue'
+    import { mapGetters } from 'vuex'
     
     import Vue from 'vue';
     import { Sidebar, SidebarItem, Toast, Notify } from 'vant';
@@ -71,28 +57,60 @@
     	name:'Note',
         data() {
             return {
-              activeKey:'0',
+              activeKey:'',
               value:'',
             };
         },
         mounted(){
-            this.$store.dispatch(GET_CATEGORIES)
+            //加载侧边栏
+            this.$store.dispatch(GET_CATEGORIES);
+        },
+        components: {
+            Search
         },
         methods: {
-            onChange(index) {
-                Notify({ type: 'primary', message: index });
+            handleContent(pid){
+                this.$store.dispatch(GET_NOTE_CATEGORIES,pid)
+                // console.log(0)
             },
         },
+        computed:{
+        // 使用对象展开运算符将 getter 混入 computed 对象中
+        ...mapGetters([
+                'listCategories',
+                'listArr'
+            ])
+        }
 
     };
 </script>
 
-<style scoped>
- /* .van-sidebar {
-    width: 100px;
-  }
-  .van-sidebar-item{
-    font-size:30px;
-  }*/
-
+<style lang="less" scoped>
+ #Note{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    .sidebar{
+        .sidebar-icon{
+            width: 33.3%;
+            text-align: center;
+            .child-item{
+                img{
+                    // margin-top: 2rem;
+                    width: 2rem;
+                    height: 2rem;
+                }
+                p{
+                    font-size: .375rem;
+                    font-weight: 400;
+                }
+            }
+            
+        }
+    }
+    
+}
 </style>

@@ -5,7 +5,7 @@ module.exports = {
   devServer:{
     port:3003,
     // proxy: 'http://127.0.0.1:3000',
-    proxy: 'https://api.mall.kuazhu.com/',
+    proxy: 'https://api.mall.kuazhu.com',
   },
   //配置less文件
   pluginOptions: {
