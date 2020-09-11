@@ -11,14 +11,14 @@
         <van-row type="flex">
             <div>
                 <van-sidebar v-model="activeKey" >
-                        <van-sidebar-item
-                        v-for="(arr,arrindex) in listCategories" 
-                        :key="arrindex"
-                        :title="arr.name"
-                        :pid="arr._id"
-                        @click="handleContent()"
-                         /> 
-                    </van-sidebar>
+                    <van-sidebar-item
+                    v-for="(arr,arrindex) in this.$store.state.note.categories" 
+                    :key="arrindex"
+                    :title="arr.name"
+                    :pid="arr._id"
+                    @click="handleContent()"
+                     /> 
+                </van-sidebar>
             </div>
 
             
@@ -61,9 +61,15 @@
               value:'',
             };
         },
+
+
         mounted(){
+            var _this = this;
             //加载侧边栏
-            this.$store.dispatch(GET_CATEGORIES);
+            this.$store.dispatch(GET_CATEGORIES)
+            .then(()=>{
+                console.log(_this.$store.state.note.categories)
+            });
         },
         components: {
             Search
