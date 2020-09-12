@@ -1,6 +1,6 @@
 <template>
 	<div id="Search">
-		<van-search  v-model="value" placeholder="请输入搜索关键词" @click='goSearch' />
+		<van-search  v-model="value" placeholder="请输入关键词" @click='goSearch' />
 	</div>
 </template>
 

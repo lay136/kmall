@@ -1,15 +1,22 @@
 <template>
-    <div class="Cart">
-        this is Cart page
-    </div>
+	<div id="Cart">
+		<p>
+			this is Cart
+		</p>
+	</div>
 </template>
 
 <script>
-    export default {
-        name:'Cart',       
-    }
+	
+	export default {
+		name:'Cart',
+	}
 </script>
 
-<style>
-  
+<style scoped lang="less">
+	#Cart{
+		p{
+			color: #008000;
+		}
+	}
 </style>

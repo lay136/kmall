@@ -1,207 +1,203 @@
 <template>
-    <div class="Home">
-        <!-- 粘性布局 -->
-        <van-sticky>
-            <!-- 搜索框 -->
-            <Search />
-            <!-- <div class="header">
-                <van-search v-model="value" placeholder="请输入搜索关键词" />
-            </div> -->
-        </van-sticky>
-
-        <!-- 轮播图部分 -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div 
-                    class="swiper-slide"
-                    v-for="(ad,index) in homeAds"
-                >
-                    <img :src="ad.image" alt="">
-                </div>
-            </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
-        </div>
-
-        <van-grid 
-            :column-num='5' 
-            :gutter="1" 
-            square
-            :icon-size="43"
-            >
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243404358.jpg" text="手机通讯" url="http://m.mall.kuazhu.com/#/list?categoryId=5f157b8d5dbe7a0023712b7c"/>
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243379743.jpg" text="食品生鲜" />
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595244144843.jpg" text="家用电器" />
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243206088.jpg" text="饮料酒水" />
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243323048.jpg" text="汽车保养" />
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243232631.jpg" text="美妆护肤" />
-          
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243130830.jpg" text="个护清洁" />
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1587973628877.png" text="电脑耗材" />
-            
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243270185.jpg" text="母婴童装" />
-            <van-grid-item icon="https://api.mall.kuazhu.com/category-icons/1595243298132.jpg" text="内衣配饰" />
-        </van-grid>
-         
-          <!-- <div class="grid-father">
-            <van-grid 
-            :column-num="5"
-            :gutter="3" 
-            :icon-size="60"
-            center
-            v-for="(arr, index) in homeArr" :key="index"
-            >
-                <van-grid-item :icon="arr.icon" :text="arr.name" />
-            </van-grid>
-        </div> -->
-
-        <!-- 商品列表部分 -->
-        <ul class="product-wrap" v-if="homeFloors.length > 1">
-            <li class="product-floor" v-for="(floor,floorIndex) in homeFloors" :key="floorIndex">
-                <h3 class="floor-title">{{floor.title}}</h3>
-                <ul class="product-list">
-                    <li class="product-item" v-for="(product,productIndex) in floor.products" :key="productIndex">
-                        <img class="product-image" :src="product.mainImage" alt="">
-                        <div class="product-content">
-                            <h4 class="product-name" style="overflow: space-between;">{{product.name}}</h4>
-                            <p class="product-price">{{product.price | formatPrice}}</p>
-                            <span class="btn-buy">购买</span>
-                        </div>
-                    </li>                                                       
-                </ul>
-            </li>       
-        </ul>        
-    </div>
+	<div id="Home">
+		<van-sticky>
+			<Search />
+		</van-sticky>
+		<van-swipe :autoplay="3000">
+			<van-swipe-item v-for="(image, index) in this.$store.state.home.ads" :key="index">
+				<van-col span="24">
+					<img v-lazy="image.image" />
+				</van-col>
+			</van-swipe-item>
+		</van-swipe>
+		<div id="item">
+			<div 
+				id="item-list" 
+				v-for="(item,index) in this.$store.state.home.homeList"
+				:key="''+index"
+				@click="handleProducts(item._id)"
+			>
+				<img :src="item.icon"></img>
+				<div id="item-content">{{item.name}}</div>
+			</div>
+		</div>
+		
+		<ul id="product">
+			<li 
+				class="product-floors"
+				v-for="(item,index) in this.$store.state.home.products"
+				:key="''+index"
+			>
+				<div class="product-title">{{item.title}}</div>
+				<ul class="product-list">
+					<li 
+					
+						class="product-item"
+						v-for="(product,productindex) in item.products"
+						:key="''+productindex"
+					>
+						<div class="product-header">
+							<a href="#">
+								<img :src="product.mainImage"></img>
+							</a>
+							<div class="product-name">
+								{{product.name}}
+							</div>
+							<div class="produce-pi">
+								<div class="product-price">￥{{product.price}}</div>
+								<van-icon name="cart-o" color="#52c41a" size=".75rem" />
+							</div>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
 </template>
 
 <script>
-    import Vue from 'vue';
-
-    import { mapGetters } from 'vuex'
-    import Swiper from 'swiper'
-    import 'swiper/dist/css/swiper.min.css'
-    import { GET_ADS,GET_FLOORS,GET_CATEGORIES } from './store/types.js' 
-    import Search from '../../components/search/index.vue'
-    export default {
-        name:'Home',
-        data(){
-            return {
-                value:''
-            }
-        }, 
-        components: {
-            Search
-        },
-        mounted(){
-            //获取广告数据
-            this.$store.dispatch(GET_ADS)
-            .then(()=>{
-                new Swiper ('.swiper-container', {
-                    // 循环模式选项
-                    loop: true,
-                    autoplay:true,
-                    //分页器
-                    pagination: {
-                      el: '.swiper-pagination',
-                      clickable:true
-                    },
-                })                
-            })
-            //获取楼层数据
-            this.$store.dispatch(GET_FLOORS)
-            //获取分类数据
-            this.$store.dispatch(GET_CATEGORIES)
-        },
-        computed:{
-            //用对象展开运算符将 getter 混入 computed 对象中
-            ...mapGetters([
-                'homeArr',
-                'homeAds',
-                'homeFloors',
-
-            ])
-        }              
-    }
+	// import { mapGetters } from 'vuex'
+	import { GET_LIST, GET_PRODUCT, GET_ADS } from './store/types.js'
+	import Search from 'components/search/index.vue'
+	
+	export default {
+		name:'Home',
+		
+		mounted(){
+			//加载轮播图
+			this.$store.dispatch(GET_ADS);
+			//加载首页列表
+			this.$store.dispatch(GET_LIST);
+			//加载楼层
+			this.$store.dispatch(GET_PRODUCT)
+			
+		},
+		components: {
+			Search
+		},
+		methods:{
+			handleProducts(id){
+				this.$router.push({
+					path :'/list',
+					query:{
+						id:id
+					},
+				})
+			}
+		}
+		
+	}
 </script>
 
 <style scoped lang="less">
-    .Home{
-        .swiper-slide img{
-            width: 100%;
-            .rem(height,160);
-        }
-        .grid-father{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            z-index: 99;
-            .van-grid-item{
-                height: 90px;
-                margin-bottom: 5px;
-                margin-top: 5px;
-            }
-        }
-        .product-wrap{
-            display: absolute;
-            flex-direction: column;
-            .rem(padding,0,10);
-            .product-floor{
-                margin-bottom: 10px;
-                .floor-title{
-                    text-align: center;
-                    margin-bottom: 5px;
-                    .rem(line-height,30);
-                    .rem(font-size,18);
-                }
-                .product-list{
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
-                    .product-item{
-                        box-sizing: border-box;
-                        text-align: center;
-                        background-color: #fff;
-                        margin-top: 10px;
-                        .rem(padding,10);
-                        .product-image{
-                            .rem(width,100);
-                            .rem(height,100);
-                        }
-                        .product-content{
-                            .rem(height,100);
-                            .rem(width,125);
-                            .product-name{
-                                .rem(height,40);
-                                .rem(line-height,20);
-                                .rem(font-size,12);
-                                overflow: hidden;
-                                text-align: left;
-                                color: #111;
-                            }
-                            .product-price{
-                                .rem(line-height,20);
-                                .rem(font-size,18);
-                                text-align: left;
-                                color: #f21;
-                            }
-                            .btn-buy{
-                                display: block;
-                                .rem(line-height,20);
-                                .rem(width,60);
-                                .rem(font-size,16);
-                                .rem(padding,5);
-                                background-color: #f21;
-                                color: #fff;
-                                border-radius: 5px;
-                                margin-top: 10px;
-                            }
-                        }
-                    }
-                }
-            }
-        }           
-    }
-    
+	#Home{
+		.van-swipe{
+			position: relative;
+		}
+		.van-swipe-item{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			img{
+				width: 100%;
+				height: 5rem;
+			}
+		};
+		#item{
+			display: flex;
+			flex-wrap:wrap;
+			#item-list{
+				box-sizing: border-box;
+				width: 20%;
+				overflow: hidden;
+				flex-direction:column;
+				img{
+					margin-top: 10px;
+					width: 1.5rem;
+					height: 1.5rem;
+					display: inline-block;
+					border-radius: 50%;
+					justify-content:center;
+					margin-left: 12px;
+				}
+				#item-content{
+					margin-top: .1rem;
+					color: #7d7e80;
+					font-size: .375rem;
+					text-align: center;
+				}
+			}
+		}
+		
+		#product{
+			display: flex;
+			flex-wrap:wrap;
+			flex-direction: column;
+			padding: 0 .3125rem;
+			margin-bottom: 1.25rem;
+			.product-floors{
+				margin-top: 20px;
+			}
+			.product-title{
+				margin-bottom: .15625rem;
+				line-height: .9375rem;
+				font-size: .5625rem;
+				text-align: center;
+			}
+			.product-list{
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				.product-item{
+					box-sizing: border-box;
+					width: 4.53125rem;
+					height: 6.875rem;
+					background-color: #fff;
+					margin-bottom: .3125rem;
+					padding: .15625rem;
+					.product-header{
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						img{
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+						
+						.product-name{
+							height: 1.25rem;
+							max-height: 1.25rem;
+							line-height: .625rem;
+							font-size: .4375rem;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							word-break: break-all;
+							vertical-align: baseline;
+							font-weight: 400;
+						}
+						.produce-pi{
+							display: flex;
+							justify-content:space-between;
+							van-icon{
+								float: right;
+							}
+							.product-price{
+								line-height: .625rem;
+								display: inline-block;
+								color: #f44;
+								font-weight: 500;
+								font-size: 0.4375rem;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		
+		
+	}
 </style>

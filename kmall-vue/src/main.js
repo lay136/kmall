@@ -1,25 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
-//引入公共css
-
-import './assets/css/common.css'
-
-//全局加载vant组件
-import './plugins/vant'
-//引入store
-import store from './store'
-//引入路由对象
-import router from './router'
-
-//引入过滤器
-import filters from './filters/'
-
-Object.keys(filters).forEach(key=>Vue.filter(key,filters[key]))
 
 Vue.config.productionTip = false
+//加载全局css样式
+import './assets/css/common.css'
+import router from './router/index.js'
+//全局加载vant组件
+import './plugins/vant/index.js';
+
+
+import store from './store/index.js'
 
 new Vue({
-    store,
-    router,
-    render: h => h(App),
+	router,
+	store,
+	render: h => h(App),
 }).$mount('#app')

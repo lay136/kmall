@@ -1,13 +1,14 @@
-var API_CONFIG = {
-    getPositionAds:              ['/ads/positionAds','get'],
-    getFloors:                   ['/floors','get'], 
 
-    //分类
-    getArrayCategories:       	 ['/categories/arrayCategories','get'],
-    getNoteCategories:           ['/categories/childArrayCategories', 'get'],
-   // https://api.mall.kuazhu.com/categories/childArrayCategories?limit=20&pid=5f157b8d5dbe7a0023712b7c
-}
+export const API_CONFIG = {
+    //首页
+    getHomeAds:                 ['/ads/positionAds','get'],
+    getHomeFloors:              ['/floors?limit=10','get'],
 
-module.exports = {
-    API_CONFIG
+	//分类页
+    getCategories:              ['/categories/arrayCategories','get'],
+    getNoteCategories:         ['/categories/childArrayCategories','get'],
+
+	//首页商品列表
+    getProductsList:         	['/products/list','get'],
+    getProductsDetail:         	['/products/detail','get'],
 }
