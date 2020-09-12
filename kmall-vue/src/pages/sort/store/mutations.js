@@ -7,7 +7,7 @@ export default {
 		state.sidebar = payload
 	},
 	[GET_NOTE_CATEGORIES]:function(state,list){
-		// console.log(payload)
+		// console.log(list)
 		state.categories = list
 	},
 }

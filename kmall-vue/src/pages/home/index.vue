@@ -1,8 +1,11 @@
 <template>
 	<div id="Home">
+		<!-- 搜索部分 -->
 		<van-sticky>
 			<Search />
 		</van-sticky>
+
+		<!-- 轮播图部分 -->
 		<van-swipe :autoplay="3000">
 			<van-swipe-item v-for="(image, index) in this.$store.state.home.ads" :key="index">
 				<van-col span="24">
@@ -10,6 +13,8 @@
 				</van-col>
 			</van-swipe-item>
 		</van-swipe>
+
+		<!-- 热销部分 -->
 		<div id="item">
 			<div 
 				id="item-list" 
@@ -22,6 +27,7 @@
 			</div>
 		</div>
 		
+		<!-- 商品列表 -->
 		<ul id="product">
 			<li 
 				class="product-floors"
@@ -29,15 +35,16 @@
 				:key="''+index"
 			>
 				<div class="product-title">{{item.title}}</div>
-				<ul class="product-list">
+				<ul class="product-list" @click.stop="">
 					<li 
 					
 						class="product-item"
 						v-for="(product,productindex) in item.products"
 						:key="''+productindex"
+						@click.stop="goDetail(product._id)"
 					>
 						<div class="product-header">
-							<a href="#">
+							<a href="javascript:;">
 								<img :src="product.mainImage"></img>
 							</a>
 							<div class="product-name">
@@ -79,6 +86,14 @@
 			handleProducts(id){
 				this.$router.push({
 					path :'/list',
+					query:{
+						id:id
+					},
+				})
+			},
+			goDetail(id){
+				this.$router.push({
+					path :'/Detail',
 					query:{
 						id:id
 					},

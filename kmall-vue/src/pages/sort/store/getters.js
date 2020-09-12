@@ -1,8 +1,8 @@
 export default {
-	homeList(state){
-		return state.homeList
+	sortList(state){
+		return state.sortList
 	},
-	homeFloors(state){
+	sortFloors(state){
 		return state.floors
 	},
 }

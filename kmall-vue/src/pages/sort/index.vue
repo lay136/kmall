@@ -31,8 +31,14 @@
 	export default {
 		name:'Sort',
 		mounted(){
+			var _this = this
 			//加载侧边栏
-			this.$store.dispatch(GET_CATEGORIES);
+			this.$store.dispatch(GET_CATEGORIES)
+			.then(()=>{
+				// console.log(_this.$store.state.sort.sidebar)
+				_this.$store.dispatch(GET_NOTE_CATEGORIES,_this.$store.state.sort.sidebar[0]._id);
+			})
+			// this.$store.dispatch(GET_NOTE_CATEGORIES,this.$store.state);
 		},
 		components: {
 			Search
@@ -43,8 +49,8 @@
 			};
 		},
 		methods:{
-			handleContent(id){
-				this.$store.dispatch(GET_NOTE_CATEGORIES,id);
+			handleContent(pid){
+				this.$store.dispatch(GET_NOTE_CATEGORIES,pid);
 			}
 		}
 		

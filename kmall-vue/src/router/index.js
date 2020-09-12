@@ -63,7 +63,7 @@ export default new VueRouter({
 			},
 		},
 		{
-			path:"/detail",
+			path:"/Detail",
 			component:Detail,
 			meta: {
 				footShow: false,

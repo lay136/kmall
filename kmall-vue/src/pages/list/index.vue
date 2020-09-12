@@ -64,7 +64,7 @@
 			},
 			handleDetail(id){
 				this.$router.push({
-					path :'/detail',
+					path :'/Detail',
 					query:{
 						id:id
 					},

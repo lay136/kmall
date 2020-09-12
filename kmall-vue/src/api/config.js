@@ -11,4 +11,9 @@ export const API_CONFIG = {
 	//首页商品列表
     getProductsList:         	['/products/list','get'],
     getProductsDetail:         	['/products/detail','get'],
+
+    //登录页
+	getCaptcha:         		['/users/captcha','get'],
+
+	
 }
