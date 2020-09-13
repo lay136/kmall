@@ -1,15 +1,19 @@
 <template>
     <div id="Center">
-		<van-tabs v-model="active">
-			<van-tab title="密码登录" ></van-tab>
-			<van-tab title="手机号登录" ></van-tab>
-			<van-tab title="免费注册" ></van-tab>
-		</van-tabs>
+		<div class="login">
+			<van-tabs 
+				v-model="active" 
+				class="van-tabs__wrap"
+				:border='true'
+				>
+				<van-tab title="密码登录" ></van-tab>
+				<van-tab title="手机号登录" ></van-tab>
+				<van-tab title="免费注册" ></van-tab>
+			</van-tabs>
 
-		<div class="van-tabs__content">
-				<van-form @submit="onSubmit">
+			<div class="van-tabs__content">
+				<van-form  @submit="onSubmit">
 					<van-field
-						v-model="username"
 						name="用户名"
 						placeholder="请输入手机号"
 						:rules="[{ pattern, message: '请输入正确内容' }]"
@@ -27,12 +31,10 @@
 							type="password"
 							name="密码"
 							placeholder="请输入图形内验证码"
+							:rules="[{ required: true, message: '请输入图形内验证码' }]"
 						/>
-						<div>
-							
-						</div>
 					</div>
-					
+				
 					<div style="margin: 16px;">
 						<van-button round block type="info" native-type="submit">
 							登录
@@ -40,13 +42,14 @@
 					</div>
 				</van-form>
 			</div>
-			<!-- <div class="backhome">返回首页</div> -->
+			<div class="backhome" @click='goHome'>返回首页</div>
+			<!-- this is Center page -->
 		</div>
-        <!-- this is Center page -->
-    </div>
+	</div>
 </template>
 
 <script>
+	import { mapGetters } from 'vuex'
 	import { GET_CAPTCHA } from './store/types.js'
     export default {
 		name:'Center',
@@ -69,11 +72,19 @@
 			pattern(username) {
 				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(username);
 			},
+			goHome(){
+				this.$router.replace('/')
+			},
+		},
+		computed: {
+			...mapGetters([
+				'captcha',
+			])
 		},
 	}
 </script>
 
-<style style="less" >
+<style lang="less" scoped>
 	#Center{
 		position: fixed;
 		top: 0;
@@ -101,15 +112,28 @@
 					text-align: center;
 					cursor: pointer;
 				}
-				
+			}
+			.van-tabs__wrap{
+				padding-bottom: .46875rem;
+				font-size: 20px;
 			}
 
-			/*.backhome{
+			.van-cell{
+				line-height: 1.25rem;
+			}
+			.backhome{
 				margin-left: .3125rem;
 				margin-top: .3125rem;
-				font-size: .175rem;
+				font-size: .375rem;
 				color: #1890ff;
-			}*/
+			}
+			.van-button--info{
+				color: #fff;
+				font-size: .5rem;
+				background-color: #07c160;
+				border: .03125rem solid #07c160;
+			}
 		}
 	}
+
 </style>

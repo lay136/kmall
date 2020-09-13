@@ -2,7 +2,7 @@
 	<div id="Detail">
 		<van-nav-bar
 			title="商品详情"
-			font-size="20px"
+			font-size="30px"
 			left-text="返回"
 			left-arrow
 			@click-left="onClickLeft"
@@ -86,7 +86,7 @@
 	}
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 	#Detail{
 		.detailItem{
 			.van-swipe{

@@ -13,7 +13,7 @@ export const API_CONFIG = {
     getProductsDetail:         	['/products/detail','get'],
 
     //登录页
-	getCaptcha:         		['/users/captcha','get'],
+	getUserCaptcha:         	['/users/captcha','get'],
 
 	
 }

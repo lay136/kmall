@@ -5,13 +5,13 @@ import VueRouter from "vue-router"
 //2.引入页面组件
 import Home from 'pages/home'
 import Cart from 'pages/cart'
-import Center from 'pages/center'
 
 import Sort from 'pages/sort'
 import Search from 'pages/search'
 
 import List from 'pages/list'
 import Detail from 'pages/detail'
+import Center from 'pages/center'
 
 //3.声明使用
 Vue.use(VueRouter)
