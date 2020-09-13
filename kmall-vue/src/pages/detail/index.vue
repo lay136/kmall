@@ -47,9 +47,13 @@
 <script>
 	import { GET_PRODUCTS_DETAIL } from './store/types.js'
 	import { mapGetters } from 'vuex'
+<<<<<<< HEAD
 	import Vue from 'vue';
 	import { Toast } from 'vant'; 
 	Vue.use(Toast);
+=======
+	import { Toast } from '../../plugins/vant/index.js';
+>>>>>>> 66ca6d3fe49a3c1728d5df84bf792872680ccf72
 	export default {
 		name:'Detail',
 		// data(){
@@ -103,8 +107,13 @@
 					.van-swipe-item{
 						text-align: center;
 						img{
+<<<<<<< HEAD
 							width: 10rem;
 							height: 10rem;
+=======
+							width: 8rem;
+							height: 8rem;
+>>>>>>> 66ca6d3fe49a3c1728d5df84bf792872680ccf72
 						}
 					}
 				}

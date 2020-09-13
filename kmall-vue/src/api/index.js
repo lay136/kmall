@@ -1,9 +1,17 @@
 //目标，导出一个对象：对象的属性名就是方法名，值就是方法
+<<<<<<< HEAD
 
 
 import { API_CONFIG } from './config.js'
 import axios from 'axios'
 
+=======
+
+
+import { API_CONFIG } from './config.js'
+import axios from 'axios'
+
+>>>>>>> 66ca6d3fe49a3c1728d5df84bf792872680ccf72
 const getApiObj = (API_CONFIG)=>{
 	const apiObj = {}
 	for(let key in API_CONFIG){
