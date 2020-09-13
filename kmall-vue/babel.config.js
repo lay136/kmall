@@ -1,6 +1,6 @@
 module.exports = {
   presets: [
-    '@vue/App'
+    '@vue/cli-plugin-babel/preset'
   ],
   plugins: [
     ['import', {
@@ -8,5 +8,5 @@ module.exports = {
       libraryDirectory: 'es',
       style: true
     }, 'vant']
-  ]  
+  ]
 }

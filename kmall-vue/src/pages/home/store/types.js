@@ -1,3 +1,5 @@
-export const GET_ADS = 'home_get_ads'
-export const GET_CATEGORIES = 'categories_get_categories';
-export const GET_FLOORS = 'home_get_floors'
+
+
+export const GET_LIST = 'get_list';
+export const GET_ADS = 'get_ads';
+export const GET_PRODUCT = 'get_product';
