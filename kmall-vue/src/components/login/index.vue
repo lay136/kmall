@@ -1,0 +1,115 @@
+<template>
+	<div id="Login">
+		<van-tab title="手机号登录" >
+			<div class="van-tabs__content">
+				<van-form @submit="onSubmit">
+					<van-field
+						:value="shows"
+						name="用户名"
+						placeholder="请输入手机号"
+						:rules="[{ phone, required: true,message: '请输入正确内容', }]"
+						@touchstart.native.stop="show = true"
+					/>
+					<div class="checking">
+						<van-field
+							name="密码"
+							placeholder="请输入密码"
+							:rules="[{ required: true, message: '请填写密码' }]"
+							@touchstart.native.stop="show = true"
+						/>
+						<div class="ckecking-button">
+							<van-button type="primary" size="small">发送验证码</van-button>
+						</div>
+					</div>
+					
+					<div style="margin: 16px;">
+						<van-button round block type="info" native-type="submit">
+							登 录
+						</van-button>
+					</div>
+				</van-form>
+				<div class="backhome" @click="goHome">返回首页</div>
+				
+				<van-number-keyboard
+					:show="show"
+					@input="onInput"
+					@blur="show = false"
+					v-model='shows'
+				/>
+			</div>
+		</van-tab>
+	</div>
+</template>
+
+<script>
+	import { Toast } from 'vant';
+	export default {
+		name:'Login',
+		data() {
+			return {
+				active: 0,
+				show: false,
+				shows:'',
+			};
+		},
+		methods: {
+			goHome(){
+				this.$router.replace('/')
+			},
+			onSubmit(values) {
+				console.log('submit', values);
+			},
+			phone(val) {
+				return /^((13[0-9])|(17[0-1,6-8])|(15[^4,\\D])|(18[0-9]))\d{8}$/.test(val);
+			},
+			onInput(value) {
+				Toast(value);
+			},
+			onDelete() {
+				Toast('删除');
+			},
+			
+		},
+	}
+</script>
+
+<style scoped lang="less">
+	.van-tabs__wrap{
+		padding-bottom: .46875rem;
+	}
+	.van-cell{
+		line-height: 1.25rem;
+	}
+	
+	
+	.backhome{
+		margin-left: .3125rem;
+		margin-top: .3125rem;
+		font-size: .375rem;
+		color: #1890ff;
+	}
+	.van-button--info{
+		color: #fff;
+		font-size: .5rem;
+		background-color: #07c160;
+		border: .03125rem solid #07c160;
+	}
+	.checking{
+		display: flex;
+		.ckecking-button{
+			position: relative;
+			right: 0.625rem;
+			top: 0.175rem;
+			.van-button--small{
+				width: 2.4rem;
+				height: 2.1875rem;
+				height: 0.935rem;
+				line-height: .875rem;
+				overflow: hidden;
+			}
+			.van-button__text{
+				font-size: 0.375rem;
+			}
+		}
+	}
+</style>
