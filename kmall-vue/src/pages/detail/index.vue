@@ -1,12 +1,14 @@
 <template>
 	<div id="Detail">
-		<van-nav-bar
-			title="商品详情"
-			font-size="30px"
-			left-text="返回"
-			left-arrow
-			@click-left="onClickLeft"
-		/>
+		<van-sticky>
+			<van-nav-bar
+				title="商品详情"
+				font-size="30px"
+				left-text="返回"
+				left-arrow
+				@click-left="onClickLeft"
+			/>
+		</van-sticky>
 		<div class="detailItem">
 			<van-swipe :autoplay="3000">
 				<van-swipe-item v-for="(category,index) in detailItem.images" :key="''+index">
@@ -55,7 +57,6 @@
 		// data(){
 		// 	isDetail:false
 		// },
-		
 		mounted(){
 			var id = this.$route.query.id;
 			// console.log(id);

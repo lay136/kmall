@@ -75,6 +75,9 @@
 	import Register from 'components/register/index.vue'
 	import Login from 'components/login/index.vue'
 	import api from 'api/index.js'
+	import {saveUsername,getUsername} from '../../utils/index.js'
+
+	
 	export default {
 		name:'Center',
 		data() {
@@ -94,6 +97,13 @@
 			};
 		},
 		mounted(){
+			//先判断用户的登录状态
+			//获取用户登录信息
+			if(getUsername('username')){
+				this.$router.push({
+					path:'/me',
+				})	
+			}
 			this.$store.dispatch(GET_CAPTCHA)
 		},
 		methods: {
@@ -102,14 +112,17 @@
 			},
 			onSubmit(values) {
 				var _this = this
-				api.getLogin({
+				api.postLogin({
 					username:values.username,
 					password:values.password,
 					captchaCode:values.captchaCode
 				})
 				.then((data)=>{
+					//获取到用户名，跳转到登录详情页面
 					if(data.data.code == 0){
-						localStorage.setItem('username',values.username)
+						// localStorage.setItem('username',values.username)
+							//保存登录信息
+							saveUsername(data.data.username)
 						_this.$router.push({
 							path :'/me',
 						})
@@ -182,7 +195,6 @@
 			.van-cell{
 				line-height: 1.25rem;
 			}
-			
 			
 			.backhome{
 				margin-left: .3125rem;

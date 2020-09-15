@@ -14,10 +14,21 @@ import Detail from 'pages/detail'
 import Center from 'pages/center'
 import Me from 'pages/me'
 
+//Me页路由
+//已付款
+import TobePaid from '../pages/me/pages/tobepaid'
+//已发货
+import Delivered from '../pages/me/pages/delivered'
+// 待发货
+import TobeDelivered from '../pages/me/pages/tobedelivered'
+//已完成
+import Completed from '../pages/me/pages/completed'
+// 全部订单 AllOrder
+import AllOrder from '../pages/me/pages/allorder'
+
 
 //3.声明使用
 Vue.use(VueRouter)
-
 
 //4.导出路由对象
 export default new VueRouter({
@@ -78,6 +89,43 @@ export default new VueRouter({
 				footShow: true,
 			},
 		},
+		{
+			path:"/me/tobepaid",
+			component:TobePaid,
+			meta: {
+				footShow: false,
+			},
+		},
+		{
+			path:"/me/delivered",
+			component:Delivered,
+			meta: {
+				footShow: false,
+			},
+		},
+		{
+			path:"/me/tobedelivered",
+			component:TobeDelivered,
+			meta: {
+				footShow: false,
+			},
+		},
+		{
+			path:"/me/completed",
+			component:Completed,
+			meta: {
+				footShow: false,
+			},
+		},
+		{
+			path:"/me/allorder",
+			component:AllOrder,
+			meta: {
+				footShow: false,
+			},
+		},
+
+
 		{
 			path:"/",
 			redirect:"/home",

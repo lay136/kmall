@@ -35,13 +35,54 @@
 		name:'Me',
 		data(){
 			return {
-				user:localStorage.getItem('username')
+				user:''
+				// user:localStorage.getItem('username')
+			}
+		},
+		methods:{
+			//待付款
+			handleTobePaid(){
+				this.$router.push({
+					path :'/me/tobepaid',
+				})	
+			},
+			//待发货
+			handleTobedelivered(){
+				this.$router.push({
+					path :'/me/tobedelivered',
+				})
+			},
+			//已发货
+			handleDelivered(){
+				this.$router.push({
+					path :'/me/delivered',
+				})
+			},
+			handleCompleted(){
+				this.$router.push({
+					path :'/me/completed',
+				})
+			},
+			handleAllorders(){
+				this.$router.push({
+					path :'/me/allorder',
+				})
+			},
+		},
+		mounted(){
+			//如果获取不到用户名，跳转到登录页面登录
+			var username = localStorage.getItem('username')
+			this.user = username
+			if(!username){
+				this.$router.push({
+					path :'/center',
+				})
 			}
 		},
 	}
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 	html{
 		background-color: #fff;
 	}

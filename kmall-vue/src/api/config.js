@@ -15,7 +15,10 @@ export const API_CONFIG = {
     //验证码
 	getUserCaptcha:         	['/users/captcha','get'],
     //登录
-    getLogin:                   ['/users/login','post'],
+    postLogin:                   ['/users/login','post'],
+
+    //购物车信息
+    postCarts:                   ['/carts','post'],
 
 	
 }

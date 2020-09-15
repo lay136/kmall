@@ -58,7 +58,6 @@
 </script>
 
 <style scoped lang="less">
-	
 	#Sort{
 		position: absolute;
 		top: 0;

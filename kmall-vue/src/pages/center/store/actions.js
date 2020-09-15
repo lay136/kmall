@@ -3,7 +3,7 @@
 //action中可以包含异步操作
 import api from 'api'
 
-import {GET_CAPTCHA,GET_LOGIN} from './types.js'
+import {GET_CAPTCHA,POST_LOGIN} from './types.js'
 export default {
 	async [GET_CAPTCHA]({commit}){
 		const result = await api.getUserCaptcha({})
@@ -12,18 +12,18 @@ export default {
 			commit(GET_CAPTCHA,result.data.data)
 		}
 	},
-	async [GET_LOGIN]({commit},values){
+	async [POST_LOGIN]({commit},values){
 		const username = values.username
 		const password = values.password
 		const captchaCode = values.captchaCode
-		const result = await api.getLogin({
+		const result = await api.postLogin({
 			username:username,
 			password:password,
 			captchaCode:captchaCode
 		})
 		// console.log(result);
 		if(result.data.code == 0){
-			commit(GET_LOGIN,result.data.data)
+			commit(POST_LOGIN,result.data.data)
 		}
 	},
 }

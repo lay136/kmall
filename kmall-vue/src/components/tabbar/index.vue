@@ -18,14 +18,14 @@
 			</van-tabbar-item>
 				<van-tabbar-item 
 				icon="shopping-cart-o" 
-				badge="5" 
+				badge="0" 
 				to="/cart"
 			>
 				购物车
 			</van-tabbar-item>
 				<van-tabbar-item 
 				icon="setting-o" 
-				to="/center"
+				to="/me"
 			>
 				个人中心
 			</van-tabbar-item>

@@ -4,11 +4,11 @@
 			<div class="van-tabs__content">
 				<van-form @submit="onSubmit">
 					<van-field
-						:value="form.mobilePhone"
+						:value="form.Phone"
 						name="用户名"
 						placeholder="请输入手机号"
-						v-model="form.mobilePhone"
-						:error-message="errMsg.mobilePhone"
+						v-model="form.Phone"
+						:error-message="errMsg.Phone"
 						@blur="isPhone"
 						clearable
 						@touchstart.native.stop="show = true"
@@ -17,11 +17,11 @@
 						<van-field
 							name="密码"
 							type="password"
-							placeholder="请输入密码"
-							v-model="form.mobilePassword"
+							placeholder="请输入验证码"
+							v-model="form.Password"
 							@blur="isPassword"
 							clearable
-							:error-message="errMsg.mobilePassword"
+							:error-message="errMsg.Password"
 						/>
 						<div class="ckecking-button">
 							<van-button type="primary" size="small">发送验证码</van-button>
@@ -39,7 +39,7 @@
 					:show="show"
 					@input="onInput"
 					@blur="show = false"
-					v-model='form.mobilePhone'
+					v-model='form.Phone'
 				/>
 			</div>
 		</van-tab>
@@ -93,7 +93,7 @@
 			},
 			isPassword(){
 				if (!this.form.Password){
-					this.errMsg.Password = '请填写密码！'
+					this.errMsg.Password = '请填写验证码！'
 					return false
 				}else if(!isPassword(this.form.Password)) {
 					this.errMsg.Password = '以首字母开头，必须包含数字的6-18位！'
