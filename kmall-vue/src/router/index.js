@@ -12,6 +12,8 @@ import Search from 'pages/search'
 import List from 'pages/list'
 import Detail from 'pages/detail'
 import Center from 'pages/center'
+import Me from 'pages/me'
+
 
 //3.声明使用
 Vue.use(VueRouter)
@@ -38,7 +40,7 @@ export default new VueRouter({
 			path:"/cart",
 			component:Cart,
 			meta: {
-				footShow: false,
+				footShow: true,
 			},
 		},
 		{
@@ -67,6 +69,13 @@ export default new VueRouter({
 			component:Detail,
 			meta: {
 				footShow: false,
+			},
+		},
+		{
+			path:"/me",
+			component:Me,
+			meta: {
+				footShow: true,
 			},
 		},
 		{

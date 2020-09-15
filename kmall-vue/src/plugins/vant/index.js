@@ -20,3 +20,5 @@ Vue.use(Collapse);
 Vue.use(CollapseItem);
 Vue.use(NumberKeyboard);
 
+import { Empty } from 'vant';
+Vue.use(Empty);
