@@ -1,4 +1,5 @@
 /**app.wxss**/
+/* 全局配置的样式文件 */
 .container {
   height: 100%;
   display: flex;
